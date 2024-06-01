@@ -65,12 +65,7 @@ $stmt->execute();
 <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#myDataTable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
-        });
+        $('#myDataTable').DataTable();
     });
 </script>
 
