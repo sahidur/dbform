@@ -27,8 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':salary', $salary);
     
     if ($stmt->execute()) {
+        header('Content-Type: application/json');
         echo json_encode(['status' => 'success']);
     } else {
+        header('Content-Type: application/json');
         echo json_encode(['status' => 'error']);
     }
 }
