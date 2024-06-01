@@ -20,7 +20,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Table Example</title>
+    <title>KFW All Data</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 <body>
@@ -66,6 +66,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
     $(document).ready(function() {
         $('#myDataTable').DataTable({
+            dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
