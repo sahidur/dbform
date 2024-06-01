@@ -1,14 +1,23 @@
 // js/scripts.js
+
 $(document).ready(function() {
     // Populate Division select box
     $.ajax({
         url: 'divisions.php',
         method: 'GET',
-        success: function(data) {
-            $('#division').html('<option value="">Select Division</option>');
-            data.forEach(division => {
-                $('#division').append(`<option value="${division.id}">${division.name}</option>`);
-            });
+        success: function(response) {
+            console.log(response); // Log the response to check the data structure
+            if (Array.isArray(response)) {
+                $('#division').html('<option value="">Select Division</option>');
+                response.forEach(division => {
+                    $('#division').append(`<option value="${division.id}">${division.name}</option>`);
+                });
+            } else {
+                console.error('Response is not an array:', response);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Error:', status, error);
         }
     });
 
@@ -20,12 +29,19 @@ $(document).ready(function() {
                 url: 'districts.php',
                 method: 'GET',
                 data: { division_id: divisionId },
-                success: function(data) {
-                    $('#district').html('<option value="">Select District</option>');
-                    data.forEach(district => {
-                        $('#district').append(`<option value="${district.id}">${district.name}</option>`);
-                    });
-                    $('#upazilla').html('<option value="">Select Upazilla</option>');
+                success: function(response) {
+                    if (Array.isArray(response)) {
+                        $('#district').html('<option value="">Select District</option>');
+                        response.forEach(district => {
+                            $('#district').append(`<option value="${district.id}">${district.name}</option>`);
+                        });
+                        $('#upazilla').html('<option value="">Select Upazilla</option>');
+                    } else {
+                        console.error('Response is not an array:', response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
                 }
             });
         } else {
@@ -42,11 +58,18 @@ $(document).ready(function() {
                 url: 'upazillas.php',
                 method: 'GET',
                 data: { district_id: districtId },
-                success: function(data) {
-                    $('#upazilla').html('<option value="">Select Upazilla</option>');
-                    data.forEach(upazilla => {
-                        $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
-                    });
+                success: function(response) {
+                    if (Array.isArray(response)) {
+                        $('#upazilla').html('<option value="">Select Upazilla</option>');
+                        response.forEach(upazilla => {
+                            $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
+                        });
+                    } else {
+                        console.error('Response is not an array:', response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
                 }
             });
         } else {

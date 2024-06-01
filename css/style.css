@@ -4,17 +4,13 @@ body {
 }
 
 h2 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.modal-header, .modal-footer {
-    border: none;
-}
-
-button.close {
-    font-size: 1.5rem;
-}
-
-.alert {
+.table-responsive {
     margin-top: 20px;
+}
+
+.modal-content {
+    padding: 20px;
 }

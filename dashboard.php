@@ -14,7 +14,7 @@
 <body>
     <div class="container mt-5">
         <h2 class="text-center">Dashboard</h2>
-        <div class="text-center">
+        <div class="text-center mb-3">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
             <button class="btn btn-secondary" onclick="viewData()">View Data</button>
             <button class="btn btn-info" onclick="window.location.href='profile.php'">My Profile</button>
@@ -78,9 +78,9 @@
                 url: 'view_data.php',
                 method: 'GET',
                 success: function(data) {
-                    let table = '<table class="table table-striped"><thead><tr><th>Full Name</th><th>Division</th><th>District</th><th>Upazilla</th><th>Age</th><th>Salary</th><th>Actions</th></tr></thead><tbody>';
+                    let table = '<table class="table table-striped table-responsive"><thead><tr><th>Full Name</th><th>Division</th><th>District</th><th>Upazilla</th><th>Age</th><th>Salary</th><th>Actions</th></tr></thead><tbody>';
                     data.forEach(row => {
-                        table += `<tr><td>${row.full_name}</td><td>${row.division}</td><td>${row.district}</td><td>${row.upazilla}</td><td>${row.age}</td><td>${row.salary}</td><td><button class="btn btn-sm btn-warning">Update</button></td></tr>`;
+                        table += `<tr><td>${row.full_name}</td><td>${row.division}</td><td>${row.district}</td><td>${row.upazilla}</td><td>${row.age}</td><td>${row.salary}</td><td><button class="btn btn-sm btn-warning" onclick="updateData(${row.id})">Update</button> <button class="btn btn-sm btn-danger" onclick="deleteData(${row.id})">Delete</button></td></tr>`;
                     });
                     table += '</tbody></table>';
                     $('#viewDataSection').html(table);
@@ -88,16 +88,59 @@
             });
         }
 
+        function updateData(id) {
+            $.ajax({
+                url: `get_data.php?id=${id}`,
+                method: 'GET',
+                success: function(data) {
+                    $('#updateDataModal #full_name').val(data.full_name);
+                    $('#updateDataModal #division').val(data.division);
+                    $('#updateDataModal #district').val(data.district);
+                    $('#updateDataModal #upazilla').val(data.upazilla);
+                    $('#updateDataModal #age').val(data.age);
+                    $('#updateDataModal #salary').val(data.salary);
+                    $('#updateDataModal #id').val(data.id);
+                    $('#updateDataModal').modal('show');
+                }
+            });
+        }
+
+        function deleteData(id) {
+            if (confirm('Are you sure you want to delete this data?')) {
+                $.ajax({
+                    url: 'delete_data.php',
+                    method: 'POST',
+                    data: { id: id },
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            alert('Data deleted successfully!');
+                            viewData();
+                        } else {
+                            alert('Error deleting data.');
+                        }
+                    }
+                });
+            }
+        }
+
         $(document).ready(function() {
             // Populate Division select box
             $.ajax({
                 url: 'divisions.php',
                 method: 'GET',
-                success: function(data) {
-                    $('#division').html('<option value="">Select Division</option>');
-                    data.forEach(division => {
-                        $('#division').append(`<option value="${division.id}">${division.name}</option>`);
-                    });
+                success: function(response) {
+                    console.log(response); // Log the response to check the data structure
+                    if (Array.isArray(response)) {
+                        $('#division').html('<option value="">Select Division</option>');
+                        response.forEach(division => {
+                            $('#division').append(`<option value="${division.id}">${division.name}</option>`);
+                        });
+                    } else {
+                        console.error('Response is not an array:', response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
                 }
             });
 
@@ -109,12 +152,19 @@
                         url: 'districts.php',
                         method: 'GET',
                         data: { division_id: divisionId },
-                        success: function(data) {
-                            $('#district').html('<option value="">Select District</option>');
-                            data.forEach(district => {
-                                $('#district').append(`<option value="${district.id}">${district.name}</option>`);
-                            });
-                            $('#upazilla').html('<option value="">Select Upazilla</option>');
+                        success: function(response) {
+                            if (Array.isArray(response)) {
+                                $('#district').html('<option value="">Select District</option>');
+                                response.forEach(district => {
+                                    $('#district').append(`<option value="${district.id}">${district.name}</option>`);
+                                });
+                                $('#upazilla').html('<option value="">Select Upazilla</option>');
+                            } else {
+                                console.error('Response is not an array:', response);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX Error:', status, error);
                         }
                     });
                 } else {
@@ -131,11 +181,18 @@
                         url: 'upazillas.php',
                         method: 'GET',
                         data: { district_id: districtId },
-                        success: function(data) {
-                            $('#upazilla').html('<option value="">Select Upazilla</option>');
-                            data.forEach(upazilla => {
-                                $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
-                            });
+                        success: function(response) {
+                            if (Array.isArray(response)) {
+                                $('#upazilla').html('<option value="">Select Upazilla</option>');
+                                response.forEach(upazilla => {
+                                    $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
+                                });
+                            } else {
+                                console.error('Response is not an array:', response);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX Error:', status, error);
                         }
                     });
                 } else {
