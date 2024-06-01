@@ -66,7 +66,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
     $(document).ready(function() {
         $('#myDataTable').DataTable({
-            dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
