@@ -79,44 +79,12 @@
                 url: 'view_data.php',
                 method: 'GET',
                 success: function(data) {
-                    <table id="example" class="display" style="width:100%">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Full Name</th>
-            <th>Division</th>
-            <th>District</th>
-            <th>Upazilla</th>
-            <th>Age</th>
-            <th>Salary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($data as $row) {
-                echo '<tr>';
-                echo '<td>' . $row['id'] . '</td>';
-                echo '<td>' . $row['user_id'] . '</td>';
-                echo '<td>' . $row['full_name'] . '</td>';
-                echo '<td>' . $row['division'] . '</td>';
-                echo '<td>' . $row['district'] . '</td>';
-                echo '<td>' . $row['upazilla'] . '</td>';
-                echo '<td>' . $row['age'] . '</td>';
-                echo '<td>' . $row['salary'] . '</td>';
-                echo '</tr>';
-            }
-        ?>
-    </tbody>
-</table>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
+                    let table = '<table class="table table-striped"><thead><tr><th>Full Name</th><th>Division</th><th>District</th><th>Upazilla</th><th>Age</th><th>Salary</th><th>Actions</th></tr></thead><tbody>';
+                    data.forEach(row => {
+                        table += `<tr><td>${row.full_name}</td><td>${row.division}</td><td>${row.district}</td><td>${row.upazilla}</td><td>${row.age}</td><td>${row.salary}</td><td><button class="btn btn-sm btn-warning">Update</button></td></tr>`;
+                    });
+                    table += '</tbody></table>';
+                    $('#viewDataSection').html(table);
                 }
             });
         }
