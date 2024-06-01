@@ -103,7 +103,7 @@
 
             // Populate District select box based on selected Division
             $('#division').change(function() {
-                const divisionId = $(this).val();
+                const divisionId = ${division.id};
                 if (divisionId) {
                     $.ajax({
                         url: 'districts.php',
@@ -125,7 +125,7 @@
 
             // Populate Upazilla select box based on selected District
             $('#district').change(function() {
-                const districtId = $(this).val();
+                const districtId = ${district.id};
                 if (districtId) {
                     $.ajax({
                         url: 'upazillas.php',
