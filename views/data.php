@@ -50,19 +50,13 @@
         <h2 class="text-center">Admin Panel</h2>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#dashboard">Dashboard</a>
+                <a class="nav-link active" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
+                <a class="nav-link" href="#profile">Add Beneficiary Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#settings">Settings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#reports">Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#help">Help</a>
+                <a class="nav-link" href="#settings">View Beneficiary Info</a>
             </li>
         </ul>
     </div>
@@ -73,8 +67,8 @@
                 <span class="nav-item nav-link">Welcome, Admin</span>
             </div>
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#profile">Profile</a>
-                <a class="nav-item nav-link" href="#logout">Logout</a>
+                <a class="nav-item nav-link" href="profile.php">My Profile</a>
+                <a class="nav-item nav-link" href="logout.php">Logout</a>
             </div>
         </div>
         <div id="canvas">
