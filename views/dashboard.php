@@ -96,14 +96,14 @@
                 success: function(data) {
                     $('#division').html('<option value="">Select Division</option>');
                     data.forEach(division => {
-                        $('#division').append(`<option value="${division.name}">${division.name}</option>`);
+                        $('#division').append(`<option value="${division.id}">${division.name}</option>`);
                     });
                 }
             });
 
             // Populate District select box based on selected Division
             $('#division').change(function() {
-                const divisionId = ${division.id};
+                const divisionId = $(this).val();
                 if (divisionId) {
                     $.ajax({
                         url: 'districts.php',
@@ -112,7 +112,7 @@
                         success: function(data) {
                             $('#district').html('<option value="">Select District</option>');
                             data.forEach(district => {
-                                $('#district').append(`<option value="${district.name}">${district.name}</option>`);
+                                $('#district').append(`<option value="${district.id}">${district.name}</option>`);
                             });
                             $('#upazilla').html('<option value="">Select Upazilla</option>');
                         }
@@ -125,7 +125,7 @@
 
             // Populate Upazilla select box based on selected District
             $('#district').change(function() {
-                const districtId = ${district.id};
+                const districtId = $(this).val();
                 if (districtId) {
                     $.ajax({
                         url: 'upazillas.php',
@@ -134,7 +134,7 @@
                         success: function(data) {
                             $('#upazilla').html('<option value="">Select Upazilla</option>');
                             data.forEach(upazilla => {
-                                $('#upazilla').append(`<option value="${upazilla.name}">${upazilla.name}</option>`);
+                                $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
                             });
                         }
                     });
