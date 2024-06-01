@@ -53,22 +53,4 @@ $(document).ready(function() {
             $('#upazilla').html('<option value="">Select District First</option>');
         }
     });
-
-    $('#addDataForm').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: 'add_data.php',
-            method: 'POST',
-            data: $(this).serialize(),
-            success: function(data) {
-                if (data.status === 'success') {
-                    alert('Data added successfully!');
-                    $('#addDataModal').modal('hide');
-                    viewData();
-                } else {
-                    alert('Error adding data.');
-                }
-            }
-        });
-    });
 });
