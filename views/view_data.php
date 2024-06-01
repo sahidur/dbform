@@ -26,7 +26,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #fff;
+            color: #333;
             margin: 0;
             display: flex;
         }
@@ -65,7 +65,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: #fff;
         }
     </style>
 </head>
