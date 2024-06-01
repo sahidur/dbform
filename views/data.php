@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <script src="../js/scripts.js"></script>
     <style>
         body {
             display: flex;
@@ -47,7 +53,7 @@
                 <a class="nav-link active" href="#dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#profile">Profile</a>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#settings">Settings</a>
