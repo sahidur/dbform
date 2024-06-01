@@ -39,14 +39,65 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <title>Profile</title>
+    <title>KFW All Data</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        #menu {
+            width: 200px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        #menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #menu ul li {
+            margin-bottom: 10px;
+        }
+        #menu ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin: auto;
+            background-color: #fff;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2 class="text-center">My Profile</h2>
-        <form method="post" action="profile.php" class="w-50 mx-auto">
+    <div id="menu">
+        <ul>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </div>
+    <form method="post" action="profile.php" class="w-50 mx-auto">
             <div class="form-group">
                 <label for="old_password">Old Password</label>
                 <input type="password" name="old_password" class="form-control" required>
@@ -58,7 +109,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary btn-block">Update Password</button>
         </form>
         <?php if (isset($message)) echo "<div class='alert alert-info'>$message</div>"; ?>
-        <button class="btn btn-secondary btn-block mt-3" onclick="window.location.href='dashboard.php'">Back to Dashboard</button>
-    </div>
 </body>
 </html>
