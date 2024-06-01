@@ -1,9 +1,27 @@
+<?php
+// views/view_data.php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: signin.php');
+    exit();
+}
+
+include '../includes/db.php';
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>KFW All Data</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -50,13 +68,13 @@
         <h2 class="text-center">Admin Panel</h2>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="/">Dashboard</a>
+                <a class="nav-link" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#profile">Add Beneficiary Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view_data.php">View Beneficiary Info</a>
+                <a class="nav-link active" href="view_data.php">View Beneficiary Info</a>
             </li>
         </ul>
     </div>
@@ -74,7 +92,53 @@
         <div id="canvas">
             <!-- Dynamic content will be loaded here -->
             <h1>Dashboard</h1>
-            <p>This is the dashboard area where you can see an overview of your admin panel.</p>
+            <table id="myDataTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Full Name</th>
+            <th>Division</th>
+            <th>District</th>
+            <th>Upazilla</th>
+            <th>Age</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            foreach ($data as $row) {
+                echo '<tr>';
+                echo '<td>' . $row['id'] . '</td>';
+                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td>' . $row['full_name'] . '</td>';
+                echo '<td>' . $row['division'] . '</td>';
+                echo '<td>' . $row['district'] . '</td>';
+                echo '<td>' . $row['upazilla'] . '</td>';
+                echo '<td>' . $row['age'] . '</td>';
+                echo '<td>' . $row['salary'] . '</td>';
+                echo '</tr>';
+            }
+        ?>
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myDataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
         </div>
     </div>
 
