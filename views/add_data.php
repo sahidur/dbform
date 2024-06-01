@@ -11,11 +11,31 @@ include '../includes/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id'];
     $full_name = $_POST['full_name'];
-    $division = $_POST['division'];
-    $district = $_POST['district'];
-    $upazilla = $_POST['upazilla'];
+    $division_id = $_POST['division'];
+    $district_id = $_POST['district'];
+    $upazill_id = $_POST['upazilla'];
     $age = $_POST['age'];
     $salary = $_POST['salary'];
+
+    // Fetch division name based on selected ID
+$stmt = $db->prepare("SELECT name FROM divisions WHERE id = :division_id");
+$stmt->bindParam(':division_id', $division_id);
+$stmt->execute();
+$division = $stmt->fetchColumn();
+
+// Fetch district name based on selected ID
+$stmt = $db->prepare("SELECT name FROM districts WHERE id = :district_id");
+$stmt->bindParam(':district_id', $district_id);
+$stmt->execute();
+$district = $stmt->fetchColumn();
+
+// Fetch upazilla name based on selected ID
+$stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
+$stmt->bindParam(':upazilla_id', $upazilla_id);
+$stmt->execute();
+$upazilla = $stmt->fetchColumn();
+
+
 
     $stmt = $db->prepare("INSERT INTO user_data (user_id, full_name, division, district, upazilla, age, salary) VALUES (:user_id, :full_name, :division, :district, :upazilla, :age, :salary)");
     $stmt->bindParam(':user_id', $user_id);
