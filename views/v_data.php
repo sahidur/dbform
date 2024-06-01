@@ -65,7 +65,12 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#myDataTable').DataTable();
+        $('#myDataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
     });
 </script>
 
