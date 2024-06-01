@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     // Populate District select box based on selected Division
     $('#division').change(function() {
-        const divisionId = $(this).val();
+        const divisionId = ${division.id};
         if (divisionId) {
             $.ajax({
                 url: 'districts.php',
