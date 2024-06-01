@@ -1,13 +1,3 @@
-<?php
-// views/dashboard.php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: signin.php');
-    exit();
-}
-
-include '../includes/db.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,24 +89,6 @@ include '../includes/db.php';
         }
 
         $(document).ready(function() {
-            $('#addDataForm').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: 'add_data.php',
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        if (data.status === 'success') {
-                            alert('Data added successfully!');
-                            $('#addDataModal').modal('hide');
-                            viewData();
-                        } else {
-                            alert('Error adding data.');
-                        }
-                    }
-                });
-            });
-
             // Populate Division select box
             $.ajax({
                 url: 'divisions.php',
@@ -169,6 +141,24 @@ include '../includes/db.php';
                 } else {
                     $('#upazilla').html('<option value="">Select District First</option>');
                 }
+            });
+
+            $('#addDataForm').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: 'add_data.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            alert('Data added successfully!');
+                            $('#addDataModal').modal('hide');
+                            viewData();
+                        } else {
+                            alert('Error adding data.');
+                        }
+                    }
+                });
             });
         });
     </script>
