@@ -5,6 +5,7 @@ $stmt = $db->prepare("SELECT * FROM user_data");
 $stmt->execute();
 $alldata = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
 if ($alldata->num_rows > 0) {
     // Set headers for CSV file
     header('Content-Type: text/csv; charset=utf-8');
