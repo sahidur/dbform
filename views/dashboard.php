@@ -96,7 +96,7 @@
                 success: function(data) {
                     $('#division').html('<option value="">Select Division</option>');
                     data.forEach(division => {
-                        $('#division').append(`<option value="${division.id}">${division.name}</option>`);
+                        $('#division').append(`<option value="${division.name}">${division.name}</option>`);
                     });
                 }
             });
@@ -112,7 +112,7 @@
                         success: function(data) {
                             $('#district').html('<option value="">Select District</option>');
                             data.forEach(district => {
-                                $('#district').append(`<option value="${district.id}">${district.name}</option>`);
+                                $('#district').append(`<option value="${district.name}">${district.name}</option>`);
                             });
                             $('#upazilla').html('<option value="">Select Upazilla</option>');
                         }
@@ -134,7 +134,7 @@
                         success: function(data) {
                             $('#upazilla').html('<option value="">Select Upazilla</option>');
                             data.forEach(upazilla => {
-                                $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
+                                $('#upazilla').append(`<option value="${upazilla.name}">${upazilla.name}</option>`);
                             });
                         }
                     });
