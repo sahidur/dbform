@@ -49,15 +49,21 @@ include '../includes/db.php';
                             </div>
                             <div class="form-group">
                                 <label for="division">Division</label>
-                                <select name="division" id="division" class="form-control" required></select>
+                                <select name="division" id="division" class="form-control" required>
+                                    <option value="">Select Division</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="district">District</label>
-                                <select name="district" id="district" class="form-control" required></select>
+                                <select name="district" id="district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="upazilla">Upazilla</label>
-                                <select name="upazilla" id="upazilla" class="form-control" required></select>
+                                <select name="upazilla" id="upazilla" class="form-control" required>
+                                    <option value="">Select Upazilla</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="age">Age</label>
@@ -99,6 +105,60 @@ include '../includes/db.php';
         }
 
         $(document).ready(function() {
+            // Populate Division select box
+            $.ajax({
+                url: 'divisions.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#division').html('<option value="">Select Division</option>');
+                    data.forEach(division => {
+                        $('#division').append(`<option value="${division.id}">${division.name}</option>`);
+                    });
+                }
+            });
+
+            // Populate District based on selected Division
+            $('#division').change(function() {
+                const divisionId = $(this).val();
+                if (divisionId) {
+                    $.ajax({
+                        url: 'districts.php',
+                        method: 'GET',
+                        data: { division_id: divisionId },
+                        success: function(data) {
+                            $('#district').html('<option value="">Select District</option>');
+                            data.forEach(district => {
+                                $('#district').append(`<option value="${district.id}">${district.name}</option>`);
+                            });
+                            $('#upazilla').html('<option value="">Select District First</option>');
+                        }
+                    });
+                } else {
+                    $('#district').html('<option value="">Select Division First</option>');
+                    $('#upazilla').html('<option value="">Select District First</option>');
+                }
+            });
+
+            // Populate Upazilla based on selected District
+            $('#district').change(function() {
+                const districtId = $(this).val();
+                if (districtId) {
+                    $.ajax({
+                        url: 'upazillas.php',
+                        method: 'GET',
+                        data: { district_id: districtId },
+                        success: function(data) {
+                            $('#upazilla').html('<option value="">Select Upazilla</option>');
+                            data.forEach(upazilla => {
+                                $('#upazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
+                            });
+                        }
+                    });
+                } else {
+                    $('#upazilla').html('<option value="">Select District First</option>');
+                }
+            });
+
             $('#addDataForm').on('submit', function(event) {
                 event.preventDefault();
                 $.ajax({
