@@ -26,7 +26,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #333;
+            color: #fff;
             margin: 0;
             display: flex;
         }
