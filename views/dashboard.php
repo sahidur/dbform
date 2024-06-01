@@ -18,8 +18,7 @@
         <div class="text-center">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
             <button class="btn btn-secondary" onclick="window.location.href='view_data.php'">View Data</button>
-            <button class="btn btn-info" onclick="window.location.href='profile.php'">My Profile</button>
-            <button class="btn btn-danger" onclick="logout()">Logout</button>
+            <button class="btn btn-danger" nclick="window.location.href='logout.php'">Logout</button>
         </div>
 
         <!-- Add Data Modal -->
@@ -70,10 +69,7 @@
     </div>
 
     <script>
-        function logout() {
-            window.location.href = '../logout.php';
-        }
-
+        
         function viewData() {
             $.ajax({
                 url: 'view_data.php',

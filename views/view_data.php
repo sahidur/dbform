@@ -73,8 +73,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div id="menu">
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="settings.php">Settings</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
