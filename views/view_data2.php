@@ -20,8 +20,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KFW All Data</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <title>Admin Panel</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -68,13 +67,13 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="text-center">Admin Panel</h2>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link active" href="/">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#profile">Add Beneficiary Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="view_data.php">View Beneficiary Info</a>
+                <a class="nav-link" href="view_data.php">View Beneficiary Info</a>
             </li>
         </ul>
     </div>
