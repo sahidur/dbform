@@ -153,7 +153,7 @@
                         if (data.status === 'success') {
                             alert('Data added successfully!');
                             $('#addDataModal').modal('hide');
-                            viewData();
+                            $("#addDataModal").trigger("reset");
                         } else {
                             alert('Error adding data.');
                         }
