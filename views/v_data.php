@@ -1,3 +1,20 @@
+<?php
+// views/view_data.php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: signin.php');
+    exit();
+}
+
+include '../includes/db.php';
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,42 +28,39 @@
 <table id="myDataTable" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Full Name</th>
+            <th>Division</th>
+            <th>District</th>
+            <th>Upazilla</th>
             <th>Age</th>
-            <th>Country</th>
-            <th>Email</th>
+            <th>Salary</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>30</td>
-            <td>USA</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Jane Smith</td>
-            <td>25</td>
-            <td>Canada</td>
-            <td>jane@example.com</td>
-        </tr>
-        <!-- Add more rows here -->
+        <?php
+            foreach ($data as $row) {
+                echo '<tr>';
+                echo '<td>' . $row['id'] . '</td>';
+                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td>' . $row['full_name'] . '</td>';
+                echo '<td>' . $row['division'] . '</td>';
+                echo '<td>' . $row['district'] . '</td>';
+                echo '<td>' . $row['upazilla'] . '</td>';
+                echo '<td>' . $row['age'] . '</td>';
+                echo '<td>' . $row['salary'] . '</td>';
+                echo '</tr>';
+            }
+        ?>
     </tbody>
 </table>
-
-<button id="downloadButton">Download Data</button>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#myDataTable').DataTable();
-    });
-
-    // Download data button functionality
-    $('#downloadButton').click(function(){
-        // Functionality to download data here
-        alert('Downloading data...');
     });
 </script>
 
