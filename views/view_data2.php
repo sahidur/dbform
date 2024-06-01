@@ -56,7 +56,7 @@
                 <a class="nav-link" href="#profile">Add Beneficiary Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view_data.php">View Beneficiary Info</a>
+                <a class="nav-link" href="view_data2.php">View Beneficiary Info</a>
             </li>
         </ul>
     </div>
