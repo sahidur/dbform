@@ -21,18 +21,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Sign In</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Sign In</h2>
-        <form method="post" action="signin.php">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Sign In</button>
+    <div class="container mt-5">
+        <h2 class="text-center">Sign In</h2>
+        <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
+        <form method="post" action="signin.php" class="w-50 mx-auto">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         </form>
-        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+        <p class="text-center mt-3">Don't have an account? <a href="signup.php">Sign Up</a></p>
     </div>
 </body>
 </html>

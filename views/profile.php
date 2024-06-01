@@ -1,5 +1,5 @@
 <?php
-// profile.php
+// views/profile.php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: signin.php');
@@ -39,19 +39,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Profile</title>
 </head>
 <body>
-    <div class="container">
-        <h2>My Profile</h2>
-        <form method="post" action="profile.php">
-            <input type="password" name="old_password" placeholder="Old Password" required>
-            <input type="password" name="new_password" placeholder="New Password" required>
-            <button type="submit">Update Password</button>
+    <div class="container mt-5">
+        <h2 class="text-center">My Profile</h2>
+        <form method="post" action="profile.php" class="w-50 mx-auto">
+            <div class="form-group">
+                <label for="old_password">Old Password</label>
+                <input type="password" name="old_password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="new_password">New Password</label>
+                <input type="password" name="new_password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Password</button>
         </form>
-        <?php if (isset($message)) { echo "<p>$message</p>"; } ?>
-        <button onclick="window.location.href='dashboard.php'">Back to Dashboard</button>
+        <?php if (isset($message)) echo "<div class='alert alert-info'>$message</div>"; ?>
+        <button class="btn btn-secondary btn-block mt-3" onclick="window.location.href='dashboard.php'">Back to Dashboard</button>
     </div>
 </body>
 </html>

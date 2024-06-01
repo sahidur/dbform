@@ -2,6 +2,5 @@
 // logout.php
 session_start();
 session_destroy();
-header('Location: signin.php');
-exit();
+header('Location: views/signin.php');
 ?>

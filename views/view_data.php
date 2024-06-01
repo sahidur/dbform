@@ -1,5 +1,5 @@
 <?php
-// view_data.php
+// views/view_data.php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: signin.php');
