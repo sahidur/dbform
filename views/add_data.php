@@ -30,7 +30,7 @@ $stmt->execute();
 $district = $stmt->fetchColumn();
 
 // Fetch upazilla name based on selected ID
-$stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
+$stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazill_id");
 $stmt->bindParam(':upazilla_id', $upazilla_id);
 $stmt->execute();
 $upazilla = $stmt->fetchColumn();
