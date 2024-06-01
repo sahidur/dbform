@@ -49,21 +49,15 @@ include '../includes/db.php';
                             </div>
                             <div class="form-group">
                                 <label for="division">Division</label>
-                                <select name="division" id="division" class="form-control" required>
-                                    <option value="">Select Division</option>
-                                </select>
+                                <select name="division" id="division" class="form-control" required></select>
                             </div>
                             <div class="form-group">
                                 <label for="district">District</label>
-                                <select name="district" id="district" class="form-control" required>
-                                    <option value="">Select District</option>
-                                </select>
+                                <select name="district" id="district" class="form-control" required></select>
                             </div>
                             <div class="form-group">
                                 <label for="upazilla">Upazilla</label>
-                                <select name="upazilla" id="upazilla" class="form-control" required>
-                                    <option value="">Select Upazilla</option>
-                                </select>
+                                <select name="upazilla" id="upazilla" class="form-control" required></select>
                             </div>
                             <div class="form-group">
                                 <label for="age">Age</label>
@@ -86,7 +80,7 @@ include '../includes/db.php';
 
     <script>
         function logout() {
-            window.location.href = 'logout.php';
+            window.location.href = '../logout.php';
         }
 
         function viewData() {
@@ -105,6 +99,24 @@ include '../includes/db.php';
         }
 
         $(document).ready(function() {
+            $('#addDataForm').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: 'add_data.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            alert('Data added successfully!');
+                            $('#addDataModal').modal('hide');
+                            viewData();
+                        } else {
+                            alert('Error adding data.');
+                        }
+                    }
+                });
+            });
+
             // Populate Division select box
             $.ajax({
                 url: 'divisions.php',
@@ -117,7 +129,7 @@ include '../includes/db.php';
                 }
             });
 
-            // Populate District based on selected Division
+            // Populate District select box based on selected Division
             $('#division').change(function() {
                 const divisionId = $(this).val();
                 if (divisionId) {
@@ -130,7 +142,7 @@ include '../includes/db.php';
                             data.forEach(district => {
                                 $('#district').append(`<option value="${district.id}">${district.name}</option>`);
                             });
-                            $('#upazilla').html('<option value="">Select District First</option>');
+                            $('#upazilla').html('<option value="">Select Upazilla</option>');
                         }
                     });
                 } else {
@@ -139,7 +151,7 @@ include '../includes/db.php';
                 }
             });
 
-            // Populate Upazilla based on selected District
+            // Populate Upazilla select box based on selected District
             $('#district').change(function() {
                 const districtId = $(this).val();
                 if (districtId) {
@@ -157,24 +169,6 @@ include '../includes/db.php';
                 } else {
                     $('#upazilla').html('<option value="">Select District First</option>');
                 }
-            });
-
-            $('#addDataForm').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: 'add_data.php',
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        if (data.status === 'success') {
-                            alert('Data added successfully!');
-                            $('#addDataModal').modal('hide');
-                            viewData();
-                        } else {
-                            alert('Error adding data.');
-                        }
-                    }
-                });
             });
         });
     </script>

@@ -1,6 +1,6 @@
 // js/scripts.js
 $(document).ready(function() {
-    // Load divisions on page load
+    // Populate Division select box
     $.ajax({
         url: 'divisions.php',
         method: 'GET',
@@ -12,7 +12,7 @@ $(document).ready(function() {
         }
     });
 
-    // Load districts based on selected division
+    // Populate District select box based on selected Division
     $('#division').change(function() {
         const divisionId = $(this).val();
         if (divisionId) {
@@ -25,6 +25,7 @@ $(document).ready(function() {
                     data.forEach(district => {
                         $('#district').append(`<option value="${district.id}">${district.name}</option>`);
                     });
+                    $('#upazilla').html('<option value="">Select Upazilla</option>');
                 }
             });
         } else {
@@ -33,7 +34,7 @@ $(document).ready(function() {
         }
     });
 
-    // Load upazillas based on selected district
+    // Populate Upazilla select box based on selected District
     $('#district').change(function() {
         const districtId = $(this).val();
         if (districtId) {
@@ -53,7 +54,6 @@ $(document).ready(function() {
         }
     });
 
-    // Add data form submission
     $('#addDataForm').on('submit', function(event) {
         event.preventDefault();
         $.ajax({
