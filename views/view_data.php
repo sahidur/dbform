@@ -25,14 +25,14 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: #fff;
             color: #333;
             margin: 0;
             display: flex;
         }
         #menu {
             width: 200px;
-            background-color: #fff;
+            background-color: #f8f9fa;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
@@ -65,7 +65,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #fff;
+            background-color: #f4f4f4;
         }
     </style>
 </head>
