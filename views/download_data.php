@@ -2,8 +2,7 @@
 include '../includes/db.php';
 
 $stmt = $db->prepare("SELECT * FROM user_data");
-$stmt->execute();
-$alldata = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$alldata->execute();
 
 
 if ($alldata->num_rows > 0) {
