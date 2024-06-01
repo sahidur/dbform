@@ -1,64 +1,53 @@
-<?php
-// views/view_data.php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: signin.php');
-    exit();
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataTable Example</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.dataTables.min.js"></script>
-    <style>
-        /* You can add custom styles here */
-    </style>
+    <title>Data Table Example</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 <body>
-
-<table id="example" class="display" style="width:100%">
+    
+<table id="myDataTable" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Full Name</th>
-            <th>Division</th>
-            <th>District</th>
-            <th>Upazilla</th>
+            <th>Name</th>
             <th>Age</th>
-            <th>Salary</th>
+            <th>Country</th>
+            <th>Email</th>
         </tr>
     </thead>
     <tbody>
-        <?php
-            foreach ($data as $row) {
-                echo '<tr>';
-                echo '<td>' . $row['id'] . '</td>';
-                echo '<td>' . $row['user_id'] . '</td>';
-                echo '<td>' . $row['full_name'] . '</td>';
-                echo '<td>' . $row['division'] . '</td>';
-                echo '<td>' . $row['district'] . '</td>';
-                echo '<td>' . $row['upazilla'] . '</td>';
-                echo '<td>' . $row['age'] . '</td>';
-                echo '<td>' . $row['salary'] . '</td>';
-                echo '</tr>';
-            }
-        ?>
+        <tr>
+            <td>John Doe</td>
+            <td>30</td>
+            <td>USA</td>
+            <td>john@example.com</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>25</td>
+            <td>Canada</td>
+            <td>jane@example.com</td>
+        </tr>
+        <!-- Add more rows here -->
     </tbody>
 </table>
+
+<button id="downloadButton">Download Data</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
-new DataTable('#example', {
-    ajax: 'view_data.php',
-    processing: true,
-    serverSide: true
-});
+    $(document).ready(function() {
+        $('#myDataTable').DataTable();
+    });
+
+    // Download data button functionality
+    $('#downloadButton').click(function(){
+        // Functionality to download data here
+        alert('Downloading data...');
+    });
 </script>
 
 </body>
