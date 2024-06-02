@@ -78,7 +78,7 @@ $district = $stmt->fetchColumn();
 
 
 $stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
-$stmt->bindParam(':upazilla_id', $upazilla_id);
+$stmt->bindParam(':upazilla_id', $upazila_id );
 $stmt->execute();
 $upazilla = $stmt->fetchColumn();
 
