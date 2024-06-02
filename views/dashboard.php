@@ -18,7 +18,7 @@
         <div class="text-center">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
             <button class="btn btn-secondary" onclick="window.location.href='view_data.php'">View Data</button>
-            <button class="btn btn-danger" nclick="window.location.href='logout.php'">Logout</button>
+            <button class="btn btn-danger" onclick="window.location.href='logout.php'">Logout</button>
         </div>
 
         <!-- Add Data Modal -->
