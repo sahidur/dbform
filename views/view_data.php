@@ -81,9 +81,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table id="myDataTable" class="display" style="width:100%">
             <thead>
             <tr>
-                    <th>ID</th>
                     <th>Beneficiary ID</th>
-                    <th>Name</th>
+                    <th>Beneficiary Name</th>
                     <th>Guardian Name</th>
                     <th>Sex</th>
                     <th>Age</th>
@@ -123,11 +122,11 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                     foreach ($data as $row) {
                         echo '<tr>';
-                        echo '<td>' . $row['id'] . '</td>';
                         echo '<td>' . $row['beneficiary_id'] . '</td>';
-                        echo '<td>' . $row['fulbeneficiary_namel_name'] . '</td>';
+                        echo '<td>' . $row['beneficiary_name'] . '</td>';
                         echo '<td>' . $row['guardian_name'] . '</td>';
                         echo '<td>' . $row['sex'] . '</td>';
+                        echo '<td>' . $row['age'] . '</td>';
                         echo '<td>' . $row['upazageilla'] . '</td>';
                         echo '<td>' . $row['national_id'] . '</td>';
                         echo '<td>' . $row['mobile_number'] . '</td>';
