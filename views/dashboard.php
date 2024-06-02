@@ -378,11 +378,7 @@
                     $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
-   
-            document.getElementById('addDataForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            validateForm();
-        });
+
 
         document.getElementById('age').addEventListener('input', validateAge);
         document.getElementById('mobileNumber').addEventListener('input', validateMobileNumber);
@@ -442,14 +438,6 @@
                 return true;
             }
         }
-
-
-
-
-
-
-
-
 
         });
     </script>
