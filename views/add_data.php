@@ -126,7 +126,7 @@ $upazilla = $stmt->fetchColumn();
     $stmt->bindParam(':climate_migrant', $climate_migrant, PDO::PARAM_BOOL);
     $stmt->bindParam(':division', $division);
     $stmt->bindParam(':district', $district);
-    $stmt->bindParam(':upazila', $upazila);
+    $stmt->bindParam(':upazila', $upazilla);
     $stmt->bindParam(':slum_name', $slum_name);
     $stmt->bindParam(':climate_migration_cause', $climate_migration_cause);
     $stmt->bindParam(':disability_status', $disability_status, PDO::PARAM_BOOL);
