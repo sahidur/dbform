@@ -16,18 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $_POST['age'];
     $national_id = $_POST['nationalId'];
     $mobile_number = $_POST['mobileNumber'];
-    $current_division = $_POST['division'];
-    $current_district = $_POST['district'];
-    $current_upazila = $_POST['upazilla'];
+    $current_division_id = $_POST['division'];
+    $current_district_id = $_POST['district'];
+    $current_upazila_id = $_POST['upazilla'];
     $current_city_corporation = $_POST['currentCityCorporation'];
     $current_ward_no = $_POST['currentWardNo'];
     $current_slum_name = $_POST['currentSlumName'];
     $is_female_headed = $_POST['isFemaleHeaded'] === 'Yes' ? true : false;
     $hh_income = $_POST['hhIncome'];
     $climate_migrant = $_POST['climateMigrant'] === 'Yes' ? true : false;
-    $division = $_POST['pdivision'];
-    $district = $_POST['pdistrict'];
-    $upazila = $_POST['pupazila'];
+    $division_id = $_POST['pdivision'];
+    $district_id = $_POST['pdistrict'];
+    $upazila_id = $_POST['pupazila'];
     $slum_name = $_POST['slumName'];
     $climate_migration_cause = $_POST['climateMigrationCause'];
     $disability_status = $_POST['disabilityStatus'] === 'Yes' ? true : false;
@@ -44,6 +44,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adolescent_third_gender = $_POST['adolescentThirdGender'];
     $training_name = $_POST['trainingName'];
     $remarks = $_POST['remarks'];
+
+
+            // Fetch Permanent division name based on selected ID
+$stmt = $db->prepare("SELECT name FROM divisions WHERE id = :division_id");
+$stmt->bindParam(':division_id', $current_division_id);
+$stmt->execute();
+$current_division = $stmt->fetchColumn();
+
+// Fetch Permanent district name based on selected ID
+$stmt = $db->prepare("SELECT name FROM districts WHERE id = :district_id");
+$stmt->bindParam(':district_id', $current_district_id);
+$stmt->execute();
+$current_district = $stmt->fetchColumn();
+
+// Fetch Permanent upazilla name based on selected ID
+$stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
+$stmt->bindParam(':upazilla_id', $current_upazila_id);
+$stmt->execute();
+$current_upazila = $stmt->fetchColumn();
+        // Fetch Permanent division name based on selected ID
+$stmt = $db->prepare("SELECT name FROM divisions WHERE id = :division_id");
+$stmt->bindParam(':division_id', $division_id);
+$stmt->execute();
+$division = $stmt->fetchColumn();
+
+// Fetch Permanent district name based on selected ID
+$stmt = $db->prepare("SELECT name FROM districts WHERE id = :district_id");
+$stmt->bindParam(':district_id', $district_id);
+$stmt->execute();
+$district = $stmt->fetchColumn();
+
+// Fetch Permanent upazilla name based on selected ID
+$stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
+$stmt->bindParam(':upazilla_id', $upazilla_id);
+$stmt->execute();
+$upazilla = $stmt->fetchColumn();
 
     // Prepare SQL and bind parameters
     $sql = "INSERT INTO user_data (
@@ -67,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 :third_gender_under_18, :adolescent_boys, :adolescent_girls, 
                 :adolescent_third_gender, :training_name, :remarks)";
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $db->prepare($sql);
 
     // Bind parameters
     $stmt->bindParam(':beneficiary_id', $beneficiary_id);

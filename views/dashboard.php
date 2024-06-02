@@ -153,8 +153,8 @@
 
             <!-- Slum Name/Village /Area Name -->
             <div class="form-group">
-                <label for="slumName">Slum Name/Village/Area Name</label>
-                <input type="text" class="form-control" id="slumName" placeholder="Enter Slum/Village/Area Name" required>
+                <label for="slumName">Permanent Slum Name/Village/Area Name</label>
+                <input type="text" class="form-control" id="slumName" placeholder="Enter Permanent Slum/Village/Area Name" required>
             </div>
 
             <!-- Cause of climate migration -->
