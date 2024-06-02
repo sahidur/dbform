@@ -47,36 +47,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $remarks = $_POST['remarks'];
 
 
-            // Fetch Permanent division name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM divisions WHERE id = :division_id");
 $stmt->bindParam(':division_id', $current_division_id);
 $stmt->execute();
 $current_division = $stmt->fetchColumn();
 
-// Fetch Permanent district name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM districts WHERE id = :district_id");
 $stmt->bindParam(':district_id', $current_district_id);
 $stmt->execute();
 $current_district = $stmt->fetchColumn();
 
-// Fetch Permanent upazilla name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
 $stmt->bindParam(':upazilla_id', $current_upazila_id);
 $stmt->execute();
 $current_upazila = $stmt->fetchColumn();
-        // Fetch Permanent division name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM divisions WHERE id = :division_id");
 $stmt->bindParam(':division_id', $division_id);
 $stmt->execute();
 $division = $stmt->fetchColumn();
 
-// Fetch Permanent district name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM districts WHERE id = :district_id");
 $stmt->bindParam(':district_id', $district_id);
 $stmt->execute();
 $district = $stmt->fetchColumn();
 
-// Fetch Permanent upazilla name based on selected ID
+
 $stmt = $db->prepare("SELECT name FROM upazillas WHERE id = :upazilla_id");
 $stmt->bindParam(':upazilla_id', $upazilla_id);
 $stmt->execute();
