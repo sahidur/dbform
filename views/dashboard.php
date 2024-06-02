@@ -378,6 +378,7 @@
                     $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
+   
 
 
         document.getElementById('age').addEventListener('input', validateAge);
@@ -392,8 +393,7 @@
 
             if (isAgeValid && isMobileNumberValid /* && other field validations */) {
                
-                console.log('Form is valid!');
-                $('#addDataForm').on('submit', function(event) {                
+                console.log('Form is valid!');                
                 $.ajax({
                     url: 'add_data.php',
                     method: 'POST',
