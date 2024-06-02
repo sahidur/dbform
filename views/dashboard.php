@@ -380,20 +380,9 @@
             });
    
 
-
-        document.getElementById('age').addEventListener('input', validateAge);
-        document.getElementById('mobileNumber').addEventListener('input', validateMobileNumber);
-
-        function validateForm() {
-            const isAgeValid = validateAge();
-            const isMobileNumberValid = validateMobileNumber();
-
-            // Validate other fields...
-            // e.g., validateOtherField();
-
-            if (isAgeValid && isMobileNumberValid /* && other field validations */) {
-               
-                console.log('Form is valid!');                
+            $('#addDataForm').on('submit', function(event) {
+                event.preventDefault();
+                
                 $.ajax({
                     url: 'add_data.php',
                     method: 'POST',
@@ -408,33 +397,7 @@
                         }
                     }
                 });
-            }
-        }
-
-        function validateAge() {
-            const age = document.getElementById('age').value;
-            const ageError = document.getElementById('ageError');
-            if (age < 14 || age > 18) {
-                ageError.textContent = 'Age must be between 14 and 18.';
-                return false;
-            } else {
-                ageError.textContent = '';
-                return true;
-            }
-        }
-
-        function validateMobileNumber() {
-            const mobileNumber = document.getElementById('mobileNumber').value;
-            const mobileNumberError = document.getElementById('mobileNumberError');
-            const mobileRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
-            if (!mobileRegex.test(mobileNumber)) {
-                mobileNumberError.textContent = 'Invalid mobile number.';
-                return false;
-            } else {
-                mobileNumberError.textContent = '';
-                return true;
-            }
-        }
+            });
 
         });
     </script>
