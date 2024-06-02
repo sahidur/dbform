@@ -81,7 +81,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table id="myDataTable" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Beneficiary ID (Start with KFW4-CH-/KFW4-BISD-)</th>
                     <th>User ID</th>
                     <th>Full Name</th>
                     <th>Division</th>
