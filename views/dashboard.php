@@ -376,9 +376,39 @@
                     $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
+   
+            document.getElementById('addDataForm').addEventListener('submit', function (event) {
+            var age = parseFloat(document.getElementById('age').value);
+            var phoneNumber = document.getElementById('mobileNumber').value;
+            var numberFields = document.querySelectorAll('input[type="number"]');
+            var phoneRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
+
+            if (age < 14 || age > 18) {
+                alert('Age must be between 14 and 18.');
+                event.preventDefault();
+            }
+
+            if (!phoneRegex.test(phoneNumber)) {
+                alert('Please enter a valid phone number.');
+                event.preventDefault();
+            }
+
+            for (var i = 0; i < numberFields.length; i++) {
+                if (parseInt(numberFields[i].value) < 0) {
+                    alert('Number fields cannot be below 0.');
+                    event.preventDefault();
+                    break;
+                }
+            }
+        });
+
+
+
+
 
             $('#addDataForm').on('submit', function(event) {
                 event.preventDefault();
+                
                 $.ajax({
                     url: 'add_data.php',
                     method: 'POST',
