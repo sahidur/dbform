@@ -9,6 +9,7 @@ include '../includes/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
+    $user_id = $_SESSION['user_id'];
     $beneficiary_id = $_POST['beneficiaryId'];
     $beneficiary_name = $_POST['beneficiaryName'];
     $guardian_name = $_POST['guardianName'];
@@ -82,7 +83,7 @@ $stmt->execute();
 $upazilla = $stmt->fetchColumn();
 
     // Prepare SQL and bind parameters
-    $sql = "INSERT INTO user_data (
+    $sql = "INSERT INTO user_data (user_id,
                 beneficiary_id, beneficiary_name, guardian_name, sex, age, 
                 national_id, mobile_number, current_division, current_district, 
                 current_upazila, current_city_corporation, current_ward_no, 
@@ -93,7 +94,7 @@ $upazilla = $stmt->fetchColumn();
                 third_gender_under_18, adolescent_boys, adolescent_girls, 
                 adolescent_third_gender, training_name, remarks) 
             VALUES (
-                :beneficiary_id, :beneficiary_name, :guardian_name, :sex, :age, 
+                :user_id,:beneficiary_id, :beneficiary_name, :guardian_name, :sex, :age, 
                 :national_id, :mobile_number, :current_division, :current_district, 
                 :current_upazila, :current_city_corporation, :current_ward_no, 
                 :current_slum_name, :is_female_headed, :hh_income, :climate_migrant, 
@@ -106,6 +107,7 @@ $upazilla = $stmt->fetchColumn();
     $stmt = $db->prepare($sql);
 
     // Bind parameters
+    $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':beneficiary_id', $beneficiary_id);
     $stmt->bindParam(':beneficiary_name', $beneficiary_name);
     $stmt->bindParam(':guardian_name', $guardian_name);
