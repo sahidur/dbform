@@ -127,6 +127,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['guardian_name'] . '</td>';
                         echo '<td>' . $row['sex'] . '</td>';
                         echo '<td>' . $row['age'] . '</td>';
+                        echo '<td>' . $row['national_id'] . '</td>';
                         echo '<td>' . $row['upazageilla'] . '</td>';
                         echo '<td>' . $row['national_id'] . '</td>';
                         echo '<td>' . $row['mobile_number'] . '</td>';
