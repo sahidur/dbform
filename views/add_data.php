@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $climate_migrant = $_POST['climateMigrant'] === 'Yes' ? true : false;
     $division_id = $_POST['pdivision'];
     $district_id = $_POST['pdistrict'];
-    $upazila_id = $_POST['pupazila'];
+    $upazila_id = $_POST['pupazilla'];
     $slum_name = $_POST['slumName'];
     $climate_migration_cause = $_POST['climateMigrationCause'];
     $disability_status = $_POST['disabilityStatus'] === 'Yes' ? true : false;
