@@ -267,22 +267,6 @@
     </div>
 
     <script>
-        
-
-        function viewData() {
-            $.ajax({
-                url: 'view_data.php',
-                method: 'GET',
-                success: function(data) {
-                    let table = '<table class="table table-striped"><thead><tr><th>Full Name</th><th>Division</th><th>District</th><th>Upazilla</th><th>Age</th><th>Salary</th><th>Actions</th></tr></thead><tbody>';
-                    data.forEach(row => {
-                        table += `<tr><td>${row.full_name}</td><td>${row.division}</td><td>${row.district}</td><td>${row.upazilla}</td><td>${row.age}</td><td>${row.salary}</td><td><button class="btn btn-sm btn-warning">Update</button></td></tr>`;
-                    });
-                    table += '</tbody></table>';
-                    $('#viewDataSection').html(table);
-                }
-            });
-        }
 
         $(document).ready(function() {
             // Populate Division select box
