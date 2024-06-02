@@ -393,9 +393,7 @@
             if (isAgeValid && isMobileNumberValid /* && other field validations */) {
                
                 console.log('Form is valid!');
-                $('#addDataForm').on('submit', function(event) {
-                event.preventDefault();
-                
+                $('#addDataForm').on('submit', function(event) {                
                 $.ajax({
                     url: 'add_data.php',
                     method: 'POST',
