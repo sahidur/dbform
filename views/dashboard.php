@@ -67,6 +67,7 @@
             <div class="form-group">
                 <label for="age">Age</label>
                 <input type="number" class="form-control" name="age" id="age" placeholder="Enter Age" required>
+                <div class="error" id="ageError"></div>
             </div>
 
             <!-- National ID/Birth Registration -->
@@ -79,6 +80,7 @@
             <div class="form-group">
                 <label for="mobileNumber">Mobile Number</label>
                 <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" required>
+                <div class="error" id="mobileNumberError"></div>
             </div>
 
             <!-- Current Division -->
@@ -376,54 +378,66 @@
                     $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
-   
-            document.getElementById('addDataForm').addEventListener('submit', function (event) {
-            var age = parseFloat(document.getElementById('age').value);
-            var phoneNumber = document.getElementById('mobileNumber').value;
-            var numberFields = document.querySelectorAll('input[type="number"]');
-            var phoneRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
+        
 
-            if (age < 14 || age > 18) {
-                alert('Age must be between 14 and 18.');
-                event.preventDefault();
-            }
-
-            if (!phoneRegex.test(phoneNumber)) {
-                alert('Please enter a valid phone number.');
-                event.preventDefault();
-            }
-
-            for (var i = 0; i < numberFields.length; i++) {
-                if (parseInt(numberFields[i].value) < 0) {
-                    alert('Number fields cannot be below 0.');
-                    event.preventDefault();
-                    break;
-                }
-            }
+            document.getElementById('addDataForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            validateForm();
         });
 
+        document.getElementById('age').addEventListener('input', validateAge);
+        document.getElementById('mobileNumber').addEventListener('input', validateMobileNumber);
 
+        function validateForm() {
+            const isAgeValid = validateAge();
+            const isMobileNumberValid = validateMobileNumber();
 
-
-
-            $('#addDataForm').on('submit', function(event) {
-                event.preventDefault();
-                
+            if (isAgeValid && isMobileNumberValid) {
                 $.ajax({
-                    url: 'add_data.php',
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        if (data.status === 'success') {
-                            alert('Data added successfully!');
-                            $('#addDataModal').modal('hide');
-                            location.reload();
-                        } else {
-                            alert('Error adding data.');
-                        }
-                    }
-                });
-            });
+        url: 'add_data.php',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            if (data.status === 'success') {
+                alert('Data added successfully!');
+                $('#addDataModal').modal('hide');
+                location.reload();
+            } else {
+                alert('Error adding data.');
+            }
+        }
+    });
+                console.log('Form is valid!');
+            }
+        }
+
+        function validateAge() {
+            const age = document.getElementById('age').value;
+            const ageError = document.getElementById('ageError');
+            if (age < 14 || age > 18) {
+                ageError.textContent = 'Age must be between 14 and 18.';
+                return false;
+            } else {
+                ageError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateMobileNumber() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const mobileNumberError = document.getElementById('mobileNumberError');
+            const mobileRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
+            if (!mobileRegex.test(mobileNumber)) {
+                mobileNumberError.textContent = 'Invalid mobile number.';
+                return false;
+            } else {
+                mobileNumberError.textContent = '';
+                return true;
+            }
+        }
+
+
+
         });
     </script>
 </body>
