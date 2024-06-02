@@ -83,15 +83,15 @@
 
             <!-- Current Division -->
             <div class="form-group">
-                                <label for="division">Division</label>
+                                <label for="division">Current Division</label>
                                 <select name="division" id="division" class="form-control" required></select>
                             </div>
                             <div class="form-group">
-                                <label for="district">District</label>
+                                <label for="district">Current District</label>
                                 <select name="district" id="district" class="form-control" required></select>
                             </div>
                             <div class="form-group">
-                                <label for="upazilla">Upazilla</label>
+                                <label for="upazilla">Current Upazila/Thana</label>
                                 <select name="upazilla" id="upazilla" class="form-control" required></select>
                             </div>
 
@@ -139,36 +139,17 @@
 
             <!-- Division -->
             <div class="form-group">
-                <label for="division">Division</label>
-                <select class="form-control" id="division">
-                    <option>Division 1</option>
-                    <option>Division 2</option>
-                    <option>Division 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- District -->
-            <div class="form-group">
-                <label for="district">District</label>
-                <select class="form-control" id="district">
-                    <option>District 1</option>
-                    <option>District 2</option>
-                    <option>District 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Upazila/Thana -->
-            <div class="form-group">
-                <label for="upazila">Upazila/Thana</label>
-                <select class="form-control" id="upazila">
-                    <option>Upazila 1</option>
-                    <option>Upazila 2</option>
-                    <option>Upazila 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
+                                <label for="pdivision">Permanent Division</label>
+                                <select name="pdivision" id="pdivision" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pdistrict">Permanent District</label>
+                                <select name="pdistrict" id="pdistrict" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pupazilla">Permanent Upazila/Thana</label>
+                                <select name="pupazilla" id="pupazilla" class="form-control" required></select>
+                            </div>
 
             <!-- Slum Name/Village /Area Name -->
             <div class="form-group">
@@ -357,6 +338,60 @@ label>
                     });
                 } else {
                     $('#upazilla').html('<option value="">Select District First</option>');
+                }
+            });
+
+            //Permanent Address
+            $.ajax({
+                url: 'divisions.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#pdivision').html('<option value="">Select Permanent Division</option>');
+                    data.forEach(division => {
+                        $('#pdivision').append(`<option value="${division.id}">${division.name}</option>`);
+                    });
+                }
+            });
+
+            // Populate District select box based on selected Division
+            $('#pdivision').change(function() {
+                const divisionId = $(this).val();
+                if (divisionId) {
+                    $.ajax({
+                        url: 'districts.php',
+                        method: 'GET',
+                        data: { division_id: divisionId },
+                        success: function(data) {
+                            $('#pdistrict').html('<option value="">Select Permanent District</option>');
+                            data.forEach(district => {
+                                $('#pdistrict').append(`<option value="${district.id}">${district.name}</option>`);
+                            });
+                            $('#pupazilla').html('<option value="">Select Upazilla</option>');
+                        }
+                    });
+                } else {
+                    $('#pdistrict').html('<option value="">Select Division First</option>');
+                    $('#pupazilla').html('<option value="">Select District First</option>');
+                }
+            });
+
+            // Populate Upazilla select box based on selected District
+            $('#pdistrict').change(function() {
+                const districtId = $(this).val();
+                if (districtId) {
+                    $.ajax({
+                        url: 'upazillas.php',
+                        method: 'GET',
+                        data: { district_id: districtId },
+                        success: function(data) {
+                            $('#pupazilla').html('<option value="">Select Permanent Upazilla</option>');
+                            data.forEach(upazilla => {
+                                $('#pupazilla').append(`<option value="${upazilla.id}">${upazilla.name}</option>`);
+                            });
+                        }
+                    });
+                } else {
+                    $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
 
