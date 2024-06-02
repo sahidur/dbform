@@ -26,14 +26,13 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addDataModalLabel">Add Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                     <div class="container mt-5">
-        <h2>Beneficiary Profiling Form</h2>
+        <h2 style="text-align: center;">Beneficiary Profiling Form</h2>
         <form id="addDataForm">
             <!-- Beneficiary ID -->
             <div class="form-group">
@@ -84,36 +83,17 @@
 
             <!-- Current Division -->
             <div class="form-group">
-                <label for="currentDivision">Current Division</label>
-                <select class="form-control" id="currentDivision">
-                    <option>Division 1</option>
-                    <option>Division 2</option>
-                    <option>Division 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Current District -->
-            <div class="form-group">
-                <label for="currentDistrict">Current District</label>
-                <select class="form-control" id="currentDistrict">
-                    <option>District 1</option>
-                    <option>District 2</option>
-                    <option>District 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Current Upazila/Thana -->
-            <div class="form-group">
-                <label for="currentUpazila">Current Upazila/Thana</label>
-                <select class="form-control" id="currentUpazila">
-                    <option>Upazila 1</option>
-                    <option>Upazila 2</option>
-                    <option>Upazila 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
+                                <label for="division">Division</label>
+                                <select name="division" id="division" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <select name="district" id="district" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="upazilla">Upazilla</label>
+                                <select name="upazilla" id="upazilla" class="form-control" required></select>
+                            </div>
 
             <!-- Current City Corporation/Municipality/ Union -->
             <div class="form-group">
