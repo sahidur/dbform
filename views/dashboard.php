@@ -378,8 +378,7 @@
                     $('#pupazilla').html('<option value="">Select District First</option>');
                 }
             });
-        
-
+   
             document.getElementById('addDataForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
             validateForm();
@@ -392,22 +391,30 @@
             const isAgeValid = validateAge();
             const isMobileNumberValid = validateMobileNumber();
 
-            if (isAgeValid && isMobileNumberValid) {
-                $.ajax({
-        url: 'add_data.php',
-        method: 'POST',
-        data: $(this).serialize(),
-        success: function(data) {
-            if (data.status === 'success') {
-                alert('Data added successfully!');
-                $('#addDataModal').modal('hide');
-                location.reload();
-            } else {
-                alert('Error adding data.');
-            }
-        }
-    });
+            // Validate other fields...
+            // e.g., validateOtherField();
+
+            if (isAgeValid && isMobileNumberValid /* && other field validations */) {
+               
                 console.log('Form is valid!');
+                $('#addDataForm').on('submit', function(event) {
+                event.preventDefault();
+                
+                $.ajax({
+                    url: 'add_data.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            alert('Data added successfully!');
+                            $('#addDataModal').modal('hide');
+                            location.reload();
+                        } else {
+                            alert('Error adding data.');
+                        }
+                    }
+                });
+            });
             }
         }
 
@@ -435,6 +442,12 @@
                 return true;
             }
         }
+
+
+
+
+
+
 
 
 

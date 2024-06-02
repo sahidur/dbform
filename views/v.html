@@ -3,281 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beneficiary Profiling Form</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Beneficiary Profiling Form</h2>
-        <form>
-            <!-- Beneficiary ID -->
-            <div class="form-group">
-                <label for="beneficiaryId">Beneficiary ID (Start with KFW4-CH-/KFW4-BISD-)</label>
-                <input type="text" class="form-control" id="beneficiaryId" placeholder="Enter Beneficiary ID">
-            </div>
-
-            <!-- Name of beneficiary/ HH Head -->
-            <div class="form-group">
-                <label for="beneficiaryName">Name of Beneficiary/ HH Head</label>
-                <input type="text" class="form-control" id="beneficiaryName" placeholder="Enter Name">
-            </div>
-
-            <!-- Guardian (Fathers/Mothers/Husband) name -->
-            <div class="form-group">
-                <label for="guardianName">Guardian (Fathers/Mothers/Husband) Name</label>
-                <input type="text" class="form-control" id="guardianName" placeholder="Enter Guardian's Name">
-            </div>
-
-            <!-- Sex -->
-            <div class="form-group">
-                <label for="sex">Sex</label>
-                <select class="form-control" id="sex">
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Third Gender</option>
-                    <option>Other</option>
-                </select>
-            </div>
+    <div class="container">
+        <form id="addDataForm" novalidate>
+            <!-- Your form fields here... -->
 
             <!-- Age -->
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" placeholder="Enter Age">
-            </div>
-
-            <!-- National ID/Birth Registration -->
-            <div class="form-group">
-                <label for="nationalId">National ID/Birth Registration</label>
-                <input type="text" class="form-control" id="nationalId" placeholder="Enter National ID or Birth Registration">
+                <input type="number" class="form-control" name="age" id="age" placeholder="Enter Age" required>
+                <div class="error" id="ageError"></div>
             </div>
 
             <!-- Mobile Number -->
             <div class="form-group">
                 <label for="mobileNumber">Mobile Number</label>
-                <input type="text" class="form-control" id="mobileNumber" placeholder="Enter Mobile Number">
+                <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" required>
+                <div class="error" id="mobileNumberError"></div>
             </div>
 
-            <!-- Current Division -->
-            <div class="form-group">
-                <label for="currentDivision">Current Division</label>
-                <select class="form-control" id="currentDivision">
-                    <option>Division 1</option>
-                    <option>Division 2</option>
-                    <option>Division 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Current District -->
-            <div class="form-group">
-                <label for="currentDistrict">Current District</label>
-                <select class="form-control" id="currentDistrict">
-                    <option>District 1</option>
-                    <option>District 2</option>
-                    <option>District 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Current Upazila/Thana -->
-            <div class="form-group">
-                <label for="currentUpazila">Current Upazila/Thana</label>
-                <select class="form-control" id="currentUpazila">
-                    <option>Upazila 1</option>
-                    <option>Upazila 2</option>
-                    <option>Upazila 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Current City Corporation/Municipality/ Union -->
-            <div class="form-group">
-                <label for="currentCityCorporation">Current City Corporation/Municipality/ Union</label>
-                <input type="text" class="form-control" id="currentCityCorporation" placeholder="Enter City Corporation/Municipality/Union">
-            </div>
-
-            <!-- Current Ward No -->
-            <div class="form-group">
-                <label for="currentWardNo">Current Ward No</label>
-                <input type="text" class="form-control" id="currentWardNo" placeholder="Enter Ward No">
-            </div>
-
-            <!-- Current Slum Name/Village /Area Name -->
-            <div class="form-group">
-                <label for="currentSlumName">Current Slum Name/Village/Area Name</label>
-                <input type="text" class="form-control" id="currentSlumName" placeholder="Enter Slum/Village/Area Name">
-            </div>
-
-            <!-- Is the HH female headed -->
-            <div class="form-group">
-                <label for="isFemaleHeaded">Is the HH Female Headed</label>
-                <select class="form-control" id="isFemaleHeaded">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </div>
-
-            <!-- HH average income (monthly) -->
-            <div class="form-group">
-                <label for="hhIncome">HH Average Income (Monthly)</label>
-                <input type="number" class="form-control" id="hhIncome" placeholder="Enter Average Income">
-            </div>
-
-            <!-- Climate Migrant/displaced -->
-            <div class="form-group">
-                <label for="climateMigrant">Climate Migrant/Displaced?</label>
-                <select class="form-control" id="climateMigrant">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </div>
-
-            <!-- Division -->
-            <div class="form-group">
-                <label for="division">Division</label>
-                <select class="form-control" id="division">
-                    <option>Division 1</option>
-                    <option>Division 2</option>
-                    <option>Division 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- District -->
-            <div class="form-group">
-                <label for="district">District</label>
-                <select class="form-control" id="district">
-                    <option>District 1</option>
-                    <option>District 2</option>
-                    <option>District 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Upazila/Thana -->
-            <div class="form-group">
-                <label for="upazila">Upazila/Thana</label>
-                <select class="form-control" id="upazila">
-                    <option>Upazila 1</option>
-                    <option>Upazila 2</option>
-                    <option>Upazila 3</option>
-                    <!-- Add options as needed -->
-                </select>
-            </div>
-
-            <!-- Slum Name/Village /Area Name -->
-            <div class="form-group">
-                <label for="slumName">Slum Name/Village/Area Name</label>
-                <input type="text" class="form-control" id="slumName" placeholder="Enter Slum/Village/Area Name">
-            </div>
-
-            <!-- Cause of climate migration -->
-            <div class="form-group">
-                <label for="climateMigrationCause">Cause of Climate Migration</label>
-                <input type="text" class="form-control" id="climateMigrationCause" placeholder="Enter Cause of Climate Migration">
-            </div>
-
-            <!-- Disability (PWD) Status -->
-            <div class="form-group">
-                <label for="disabilityStatus">Disability (PWD) Status</label>
-                <select class="form-control" id="disabilityStatus">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </div>
-
-            <!-- Number of disabled member in the family (if any) -->
-            <div class="form-group">
-                <label for="disabledMembers">Number of Disabled Members in the Family (if any)</label>
-                <input type="number" class="form-control" id="disabledMembers" placeholder="Enter Number of Disabled Members">
-            </div>
-
-            <!-- Is the beneficiary belong to any ethnic group -->
-            <div class="form-group">
-                <label for="ethnicGroup">Is the Beneficiary Belong to Any Ethnic Group</label>
-                <select class="form-control" id="ethnicGroup">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </div>
-
-            <!-- Male household members -->
-            <div class="form-group">
-                <label for="maleMembers">Male Household Members</label>
-                <input type="number" class="form-control" id="maleMembers" placeholder="Enter Number of Male Household Members">
-            </div>
-
-            <!-- Female household members -->
-            <div class="form-group">
-                <label for="femaleMembers">Female Household Members</label>
-                <input type="number" class="form-control" id="femaleMembers" placeholder="Enter Number of Female Household Members">
-            </div>
-
-            <!-- Third gender household members -->
-            <div class="form-group">
-                <label for="thirdGenderMembers">Third Gender Household Members</
-
-label>
-                <input type="number" class="form-control" id="thirdGenderMembers" placeholder="Enter Number of Third Gender Household Members">
-            </div>
-
-            <!-- Boy (bellow 18 Year) -->
-            <div class="form-group">
-                <label for="boysUnder18">Boys (below 18 Year)</label>
-                <input type="number" class="form-control" id="boysUnder18" placeholder="Enter Number of Boys">
-            </div>
-
-            <!-- Girl (bellow 18 Year) -->
-            <div class="form-group">
-                <label for="girlsUnder18">Girls (below 18 Year)</label>
-                <input type="number" class="form-control" id="girlsUnder18" placeholder="Enter Number of Girls">
-            </div>
-
-            <!-- Third Gender (bellow 18 Year) -->
-            <div class="form-group">
-                <label for="thirdGenderUnder18">Third Gender (below 18 Year)</label>
-                <input type="number" class="form-control" id="thirdGenderUnder18" placeholder="Enter Number of Third Gender">
-            </div>
-
-            <!-- Adolescents boy (13-19 years) -->
-            <div class="form-group">
-                <label for="adolescentBoys">Adolescents Boys (13-19 years)</label>
-                <input type="number" class="form-control" id="adolescentBoys" placeholder="Enter Number of Adolescent Boys">
-            </div>
-
-            <!-- Adolescents girl (13-19 years) -->
-            <div class="form-group">
-                <label for="adolescentGirls">Adolescents Girls (13-19 years)</label>
-                <input type="number" class="form-control" id="adolescentGirls" placeholder="Enter Number of Adolescent Girls">
-            </div>
-
-            <!-- Adolescents third gender (13-19 years) -->
-            <div class="form-group">
-                <label for="adolescentThirdGender">Adolescents Third Gender (13-19 years)</label>
-                <input type="number" class="form-control" id="adolescentThirdGender" placeholder="Enter Number of Adolescent Third Gender">
-            </div>
-
-            <!-- Name of training received -->
-            <div class="form-group">
-                <label for="trainingName">Name of Training Received</label>
-                <input type="text" class="form-control" id="trainingName" placeholder="Enter Name of Training">
-            </div>
-
-            <!-- Remarks -->
-            <div class="form-group">
-                <label for="remarks">Remarks</label>
-                <textarea class="form-control" id="remarks" rows="3" placeholder="Enter Remarks"></textarea>
-            </div>
+            <!-- All other fields... -->
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('addDataForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            validateForm();
+        });
+
+        document.getElementById('age').addEventListener('input', validateAge);
+        document.getElementById('mobileNumber').addEventListener('input', validateMobileNumber);
+
+        function validateForm() {
+            const isAgeValid = validateAge();
+            const isMobileNumberValid = validateMobileNumber();
+
+            // Validate other fields...
+            // e.g., validateOtherField();
+
+            if (isAgeValid && isMobileNumberValid /* && other field validations */) {
+               
+                console.log('Form is valid!');
+                $('#addDataForm').on('submit', function(event) {
+                event.preventDefault();
+                
+                $.ajax({
+                    url: 'add_data.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        if (data.status === 'success') {
+                            alert('Data added successfully!');
+                            $('#addDataModal').modal('hide');
+                            location.reload();
+                        } else {
+                            alert('Error adding data.');
+                        }
+                    }
+                });
+            });
+            }
+        }
+
+        function validateAge() {
+            const age = document.getElementById('age').value;
+            const ageError = document.getElementById('ageError');
+            if (age < 14 || age > 18) {
+                ageError.textContent = 'Age must be between 14 and 18.';
+                return false;
+            } else {
+                ageError.textContent = '';
+                return true;
+            }
+        }
+
+        function validateMobileNumber() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const mobileNumberError = document.getElementById('mobileNumberError');
+            const mobileRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
+            if (!mobileRegex.test(mobileNumber)) {
+                mobileNumberError.textContent = 'Invalid mobile number.';
+                return false;
+            } else {
+                mobileNumberError.textContent = '';
+                return true;
+            }
+        }
+
+        // Add similar validation functions for other fields as needed...
+    </script>
 </body>
 </html>
-```
 
-This form uses Bootstrap for styling and includes input fields and dropdowns corresponding to each column in the CSV file. Adjust the options and field types as necessary for your specific requirements.
+
+$('#addDataForm').on('submit', function(event) {
+    event.preventDefault();
+    
+    $.ajax({
+        url: 'add_data.php',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            if (data.status === 'success') {
+                alert('Data added successfully!');
+                $('#addDataModal').modal('hide');
+                location.reload();
+            } else {
+                alert('Error adding data.');
+            }
+        }
+    });
+});
