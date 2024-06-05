@@ -294,13 +294,11 @@
         } else {
             additionalQuestions.style.display = "none";
             document.getElementById("pdivision").selectedIndex = -1;
+            document.getElementById("pdistrict").selectedIndex = -1;
+            document.getElementById("pupazilla").selectedIndex = -1;
             document.getElementById("climateMigrationCause").selectedIndex = -1;
-            var slumNameInput = document.getElementById('slumName');
-
-    // Clear the value of the input field
-    function clearSlumName() {
-        slumNameInput.value = '';
-    }
+            document.getElementById("slumName").value = "";
+            
         }
     }
 </script>
