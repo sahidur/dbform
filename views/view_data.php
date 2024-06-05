@@ -139,7 +139,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['current_slum_name'] . '</td>';
                         echo '<td>' . $row['is_female_headed'] . '</td>';
                         echo '<td>' . $row['hh_income'] . '</td>';
-                        echo '<td>' . $row['climate_migrant'] . '</td>';
+                        echo '<td>' . ($row['climate_migrant'] == 1 ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $row['division'] . '</td>';
                         echo '<td>' . $row['district'] . '</td>';
                         echo '<td>' . $row['upazila'] . '</td>';
