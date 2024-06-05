@@ -56,7 +56,8 @@
             <div class="form-group">
                 <label for="sex">Sex</label>
                 <select class="form-control"  name="sex" id="sex" required>
-                    <option>Male</option>
+                <option value="">Please Select</option> 
+                <option>Male</option>
                     <option>Female</option>
                     <option>Third Gender</option>
                     <option>Other</option>
@@ -119,7 +120,8 @@
             <div class="form-group">
                 <label for="isFemaleHeaded">Is the HH Female Headed</label>
                 <select class="form-control" name="isFemaleHeaded" id="isFemaleHeaded" required>
-                    <option>Yes</option>
+                <option value="">Please Select</option>     
+                <option>Yes</option>
                     <option>No</option>
                 </select>
             </div>
@@ -134,7 +136,8 @@
             <div class="form-group">
     <label for="climateMigrant">Climate Migrant/Displaced?</label>
     <select class="form-control" name="climateMigrant" id="climateMigrant" required onchange="toggleAdditionalQuestions()">
-        <option value="yes">Yes</option>
+    <option value="">Please Select</option>    
+    <option value="yes">Yes</option>
         <option value="no">No</option>
     </select>
 </div>
@@ -163,6 +166,7 @@
     <div class="form-group">
         <label for="disabilityStatus">Select Cause of Climate Migration</label>
         <select class="form-control" name="climateMigrationCause" id="climateMigrationCause" required>
+            <option value="">Please Select</option> 
             <option>Droughts, cyclone, floods, and other extreme weather events devastated homes, and infrastructure</option>
             <option>River Erosion</option>
             <option>Reduced Crops Production and Cultivation</option>
@@ -179,7 +183,8 @@
             <div class="form-group">
                 <label for="disabilityStatus">Students with disabilities Status</label>
                 <select class="form-control" name="disabilityStatus" id="disabilityStatus" required>
-                    <option>Yes</option>
+                <option value="">Please Select</option>     
+                <option>Yes</option>
                     <option>No</option>
                 </select>
             </div>
@@ -194,6 +199,7 @@
             <div class="form-group">
                 <label for="ethnicGroup">Is the Beneficiary Belong to Any Ethnic Group</label>
                 <select class="form-control" name="ethnicGroup" id="ethnicGroup" required>
+                    <option value="">Please Select</option> 
                     <option>Yes</option>
                     <option>No</option>
                 </select>
@@ -287,6 +293,13 @@
             additionalQuestions.style.display = "block";
         } else {
             additionalQuestions.style.display = "none";
+            inputsToClear.forEach(function(input) {
+                if (input.tagName === "INPUT") {
+                    input.value = "";
+                } else if (input.tagName === "SELECT") {
+                    input.selectedIndex = 0; // Reset select to first option
+                }
+            });
         }
     }
 </script>
