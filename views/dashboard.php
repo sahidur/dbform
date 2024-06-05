@@ -341,7 +341,7 @@
                 url: 'divisions.php',
                 method: 'GET',
                 success: function(data) {
-                    $('#pdivision').html('<option value="">Select Permanent Division</option>');
+                    $('#pdivision').html('<option value="">Select Climate Division</option>');
                     data.forEach(division => {
                         $('#pdivision').append(`<option value="${division.id}">${division.name}</option>`);
                     });
@@ -357,7 +357,7 @@
                         method: 'GET',
                         data: { division_id: divisionId },
                         success: function(data) {
-                            $('#pdistrict').html('<option value="">Select Permanent District</option>');
+                            $('#pdistrict').html('<option value="">Select Climate District</option>');
                             data.forEach(district => {
                                 $('#pdistrict').append(`<option value="${district.id}">${district.name}</option>`);
                             });
