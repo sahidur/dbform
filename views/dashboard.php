@@ -294,9 +294,9 @@
         } else {
             additionalQuestions.style.display = "none";
             inputsToClear.forEach(function(input) {
-                if (input.tagName === "INPUT") {
+                if (input.tagName === "input") {
                     input.value = "";
-                } else if (input.tagName === "SELECT") {
+                } else if (input.tagName === "select") {
                     input.selectedIndex = 0; // Reset select to first option
                 }
             });
