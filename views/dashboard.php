@@ -132,49 +132,48 @@
 
             <!-- Climate Migrant/displaced -->
             <div class="form-group">
-                <label for="climateMigrant">Climate Migrant/Displaced?</label>
-                <select class="form-control" name="climateMigrant" id="climateMigrant" required>
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-            </div>
+    <label for="climateMigrant">Climate Migrant/Displaced?</label>
+    <select class="form-control" name="climateMigrant" id="climateMigrant" required onchange="toggleAdditionalQuestions()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
 
-            <!-- Division -->
-            <div class="form-group">
-                                <label for="pdivision">Climate Division</label>
-                                <select name="pdivision" id="pdivision" class="form-control" required></select required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pdistrict">Climate District</label>
-                                <select name="pdistrict" id="pdistrict" class="form-control" required></select required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pupazilla">Climate Upazila/Thana</label>
-                                <select name="pupazilla" id="pupazilla" class="form-control" required></select required>
-                            </div>
-
-            <!-- Slum Name/Village /Area Name -->
-            <div class="form-group">
-                <label for="slumName">Climate Slum Name/Village/Area Name</label>
-                <input type="text" class="form-control" name="slumName" id="slumName" placeholder="Enter Climate Slum/Village/Area Name" required>
-            </div>
-
-            <!-- Cause of climate migration -->
-            
-            <div class="form-group">
-                <label for="disabilityStatus">Select Cause of Climate Migration</label>
-                <select class="form-control" name="climateMigrationCause" id="climateMigrationCause" required>
-                    <option>Droughts, cyclone, floods, and other extreme weather events devastated homes, and infrastructure</option>
-                    <option>River Erosion</option>
-                    <option>Reduced Crops Production and Cultivation</option>
-                    <option>Livelihoods Lost due to Natural Disaster</option>
-                    <option>Water Crisis</option>
-                    <option>Food Crisis</option>
-                    <option>Frequent Natural Disaster</option>
-                    <option>Increased Salinity</option>
-
-                </select>
-            </div>
+<!-- Additional Questions -->
+<div id="additionalQuestions" style="display: none;">
+    <!-- Division -->
+    <div class="form-group">
+        <label for="pdivision">Climate Division</label>
+        <select name="pdivision" id="pdivision" class="form-control" required></select>
+    </div>
+    <div class="form-group">
+        <label for="pdistrict">Climate District</label>
+        <select name="pdistrict" id="pdistrict" class="form-control" required></select>
+    </div>
+    <div class="form-group">
+        <label for="pupazilla">Climate Upazila/Thana</label>
+        <select name="pupazilla" id="pupazilla" class="form-control" required></select>
+    </div>
+    <!-- Slum Name/Village/Area Name -->
+    <div class="form-group">
+        <label for="slumName">Climate Slum Name/Village/Area Name</label>
+        <input type="text" class="form-control" name="slumName" id="slumName" placeholder="Enter Climate Slum/Village/Area Name" required>
+    </div>
+    <!-- Cause of climate migration -->
+    <div class="form-group">
+        <label for="disabilityStatus">Select Cause of Climate Migration</label>
+        <select class="form-control" name="climateMigrationCause" id="climateMigrationCause" required>
+            <option>Droughts, cyclone, floods, and other extreme weather events devastated homes, and infrastructure</option>
+            <option>River Erosion</option>
+            <option>Reduced Crops Production and Cultivation</option>
+            <option>Livelihoods Lost due to Natural Disaster</option>
+            <option>Water Crisis</option>
+            <option>Food Crisis</option>
+            <option>Frequent Natural Disaster</option>
+            <option>Increased Salinity</option>
+        </select>
+    </div>
+</div>
 
             <!-- Disability Status -->
             <div class="form-group">
@@ -472,6 +471,17 @@
                     }
                 });
             });
+
+        function toggleAdditionalQuestions() {
+        var selectBox = document.getElementById("climateMigrant");
+        var additionalQuestions = document.getElementById("additionalQuestions");
+
+        if (selectBox.value === "yes") {
+            additionalQuestions.style.display = "block";
+        } else {
+            additionalQuestions.style.display = "none";
+        }
+    }
 
         });
     </script>
