@@ -160,9 +160,20 @@
             </div>
 
             <!-- Cause of climate migration -->
+            
             <div class="form-group">
-                <label for="climateMigrationCause">Cause of Climate Migration</label>
-                <input type="text" class="form-control" name="climateMigrationCause" id="climateMigrationCause" placeholder="Enter Cause of Climate Migration" required>
+                <label for="disabilityStatus">Select Cause of Climate Migration</label>
+                <select class="form-control" name="climateMigrationCause" id="climateMigrationCause" required>
+                    <option>Droughts, cyclone, floods, and other extreme weather events devastated homes, and infrastructure</option>
+                    <option>River Erosion</option>
+                    <option>Reduced Crops Production and Cultivation</option>
+                    <option>Livelihoods Lost due to Natural Disaster</option>
+                    <option>Water Crisis</option>
+                    <option>Food Crisis</option>
+                    <option>Frequent Natural Disaster</option>
+                    <option>Increased Salinity</option>
+
+                </select>
             </div>
 
             <!-- Disability Status -->
