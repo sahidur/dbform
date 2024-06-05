@@ -137,8 +137,8 @@
     <label for="climateMigrant">Climate Migrant/Displaced?</label>
     <select class="form-control" name="climateMigrant" id="climateMigrant" required onchange="toggleAdditionalQuestions()">
     <option value="no">Please Select</option>    
-    <option value="yes">Yes</option>
-        <option value="no">No</option>
+    <option value="Yes">Yes</option>
+        <option value="No">No</option>
     </select>
 </div>
 
