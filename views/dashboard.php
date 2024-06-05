@@ -141,22 +141,22 @@
 
             <!-- Division -->
             <div class="form-group">
-                                <label for="pdivision">Permanent Division</label>
+                                <label for="pdivision">Climate Division</label>
                                 <select name="pdivision" id="pdivision" class="form-control" required></select required>
                             </div>
                             <div class="form-group">
-                                <label for="pdistrict">Permanent District</label>
+                                <label for="pdistrict">Climate District</label>
                                 <select name="pdistrict" id="pdistrict" class="form-control" required></select required>
                             </div>
                             <div class="form-group">
-                                <label for="pupazilla">Permanent Upazila/Thana</label>
+                                <label for="pupazilla">Climate Upazila/Thana</label>
                                 <select name="pupazilla" id="pupazilla" class="form-control" required></select required>
                             </div>
 
             <!-- Slum Name/Village /Area Name -->
             <div class="form-group">
-                <label for="slumName">Permanent Slum Name/Village/Area Name</label>
-                <input type="text" class="form-control" name="slumName" id="slumName" placeholder="Enter Permanent Slum/Village/Area Name" required>
+                <label for="slumName">Climate Slum Name/Village/Area Name</label>
+                <input type="text" class="form-control" name="slumName" id="slumName" placeholder="Enter Climate Slum/Village/Area Name" required>
             </div>
 
             <!-- Cause of climate migration -->
