@@ -293,13 +293,14 @@
             additionalQuestions.style.display = "block";
         } else {
             additionalQuestions.style.display = "none";
-            inputsToClear.forEach(function(input) {
-                if (input.tagName === "input") {
-                    input.value = "";
-                } else if (input.tagName === "select") {
-                    input.selectedIndex = 0; // Reset select to first option
-                }
-            });
+            document.getElementById("pdivision").selectedIndex = -1;
+            document.getElementById("climateMigrationCause").selectedIndex = -1;
+            var slumNameInput = document.getElementById('slumName');
+
+    // Clear the value of the input field
+    function clearSlumName() {
+        slumNameInput.value = '';
+    }
         }
     }
 </script>
