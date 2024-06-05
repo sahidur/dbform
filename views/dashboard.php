@@ -131,16 +131,7 @@
             </div>
 
             <!-- Climate Migrant/displaced -->
-            <div class="form-group">
-    <label for="climateMigrant">Climate Migrant/Displaced?</label>
-    <select class="form-control" name="climateMigrant" id="climateMigrant" required onchange="toggleAdditionalQuestions()">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-    </select>
-</div>
-
-<!-- Additional Questions -->
-<div id="additionalQuestions" style="display: none;">
+            <div id="additionalQuestions" style="display: none;">
     <!-- Division -->
     <div class="form-group">
         <label for="pdivision">Climate Division</label>
@@ -277,6 +268,19 @@
         <!-- View Data Section -->
         <div id="viewDataSection" class="mt-5"></div>
     </div>
+
+    <script>
+    function toggleAdditionalQuestions() {
+        var selectBox = document.getElementById("climateMigrant");
+        var additionalQuestions = document.getElementById("additionalQuestions");
+
+        if (selectBox.value === "yes") {
+            additionalQuestions.style.display = "block";
+        } else {
+            additionalQuestions.style.display = "none";
+        }
+    }
+</script>
 
     <script>
 
@@ -471,17 +475,6 @@
                     }
                 });
             });
-
-        function toggleAdditionalQuestions() {
-        var selectBox = document.getElementById("climateMigrant");
-        var additionalQuestions = document.getElementById("additionalQuestions");
-
-        if (selectBox.value === "yes") {
-            additionalQuestions.style.display = "block";
-        } else {
-            additionalQuestions.style.display = "none";
-        }
-    }
 
         });
     </script>
