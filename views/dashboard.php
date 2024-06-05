@@ -289,7 +289,7 @@
         var selectBox = document.getElementById("climateMigrant");
         var additionalQuestions = document.getElementById("additionalQuestions");
 
-        if (selectBox.value === "yes") {
+        if (selectBox.value === "Yes") {
             additionalQuestions.style.display = "block";
         } else {
             additionalQuestions.style.display = "none";
