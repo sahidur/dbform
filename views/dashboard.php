@@ -131,7 +131,16 @@
             </div>
 
             <!-- Climate Migrant/displaced -->
-            <div id="additionalQuestions" style="display: none;">
+            <div class="form-group">
+    <label for="climateMigrant">Climate Migrant/Displaced?</label>
+    <select class="form-control" name="climateMigrant" id="climateMigrant" required onchange="toggleAdditionalQuestions()">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
+
+<!-- Additional Questions -->
+<div id="additionalQuestions" style="display: none;">
     <!-- Division -->
     <div class="form-group">
         <label for="pdivision">Climate Division</label>
