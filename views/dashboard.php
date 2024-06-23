@@ -425,7 +425,7 @@
             const age = document.getElementById('age').value;
             const ageError = document.getElementById('ageError');
             if (age < 18 || age > 35) {
-                ageError.textContent = 'Age must be between 18 and 15.';
+                ageError.textContent = 'Age must be between 18 and 35';
                 return false;
             } else {
                 ageError.textContent = '';
@@ -462,8 +462,8 @@
         function validateAge() {
             const age = document.getElementById('age').value;
             const ageError = document.getElementById('ageError');
-            if (age < 14 || age > 18) {
-                ageError.textContent = 'Age must be between 14 and 18.';
+            if (age < 18 || age > 35) {
+                ageError.textContent = 'Age must be between 18 and 35.';
                 return false;
             } else {
                 ageError.textContent = '';
