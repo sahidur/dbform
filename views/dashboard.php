@@ -59,8 +59,7 @@
                 <option value="">Please Select</option> 
                 <option>Male</option>
                     <option>Female</option>
-                    <option>Third Gender</option>
-                    <option>Other</option>
+                    <option>Others</option>
                 </select>
             </div>
 
@@ -82,6 +81,14 @@
                 <label for="mobileNumber">Mobile Number</label>
                 <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" required>
                 <div class="error" id="mobileNumberError"></div>
+            </div>
+
+
+            <!-- Email Number -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="emial" id="email" placeholder="Enter your Email ID" required>
+                <div class="error" id="emailError"></div>
             </div>
 
             <!-- Current Division -->
@@ -417,8 +424,8 @@
             function validateAge() {
             const age = document.getElementById('age').value;
             const ageError = document.getElementById('ageError');
-            if (age < 14 || age > 18) {
-                ageError.textContent = 'Age must be between 14 and 18.';
+            if (age < 18 || age > 35) {
+                ageError.textContent = 'Age must be between 18 and 15.';
                 return false;
             } else {
                 ageError.textContent = '';
