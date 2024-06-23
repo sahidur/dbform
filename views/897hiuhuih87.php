@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container mt-5">
         <h2 class="text-center">Sign Up</h2>
         <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
-        <form method="post" action="signup.php" class="w-50 mx-auto">
+        <form method="post" action="897hiuhuih87.php" class="w-50 mx-auto">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control" required>
