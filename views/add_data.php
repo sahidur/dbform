@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $_POST['age'];
     $national_id = $_POST['nationalId'];
     $mobile_number = $_POST['mobileNumber'];
-    $mobile_number = $_POST['email'];
+    $email = $_POST['email'];
     $current_division_id = $_POST['division'];
     $current_district_id = $_POST['district'];
     $current_upazila_id = $_POST['upazilla'];
