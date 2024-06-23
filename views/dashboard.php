@@ -87,8 +87,7 @@
             <!-- Email Number -->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="emial" id="email" placeholder="Enter your Email ID" required>
-                <div class="error" id="emailError"></div>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email ID" required>
             </div>
 
             <!-- Current Division -->

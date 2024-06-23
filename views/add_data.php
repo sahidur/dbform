@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $_POST['age'];
     $national_id = $_POST['nationalId'];
     $mobile_number = $_POST['mobileNumber'];
+    $mobile_number = $_POST['email'];
     $current_division_id = $_POST['division'];
     $current_district_id = $_POST['district'];
     $current_upazila_id = $_POST['upazilla'];
@@ -85,7 +86,7 @@ $upazilla = $stmt->fetchColumn();
     // Prepare SQL and bind parameters
     $sql = "INSERT INTO user_data (user_id,
                 beneficiary_id, beneficiary_name, guardian_name, sex, age, 
-                national_id, mobile_number, current_division, current_district, 
+                national_id, mobile_number,email, current_division, current_district, 
                 current_upazila, current_city_corporation, current_ward_no, 
                 current_slum_name, is_female_headed, hh_income, climate_migrant, 
                 division, district, upazila, slum_name, climate_migration_cause, 
@@ -95,7 +96,7 @@ $upazilla = $stmt->fetchColumn();
                 adolescent_third_gender, training_name, remarks) 
             VALUES (
                 :user_id,:beneficiary_id, :beneficiary_name, :guardian_name, :sex, :age, 
-                :national_id, :mobile_number, :current_division, :current_district, 
+                :national_id, :mobile_number, :email, :current_division, :current_district, 
                 :current_upazila, :current_city_corporation, :current_ward_no, 
                 :current_slum_name, :is_female_headed, :hh_income, :climate_migrant, 
                 :division, :district, :upazila, :slum_name, :climate_migration_cause, 
@@ -115,6 +116,7 @@ $upazilla = $stmt->fetchColumn();
     $stmt->bindParam(':age', $age);
     $stmt->bindParam(':national_id', $national_id);
     $stmt->bindParam(':mobile_number', $mobile_number);
+    $stmt->bindParam(':email', $email);
     $stmt->bindParam(':current_division', $current_division);
     $stmt->bindParam(':current_district', $current_district);
     $stmt->bindParam(':current_upazila', $current_upazila);

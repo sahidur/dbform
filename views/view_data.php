@@ -89,6 +89,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Age</th>
                     <th>National ID</th>
                     <th>Mobile Number</th>
+                    <th>Email</th>
                     <th>Current Division</th>
                     <th>Current District</th>
                     <th>Current Upazila</th>
@@ -131,6 +132,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['age'] . '</td>';
                         echo '<td>' . $row['national_id'] . '</td>';
                         echo '<td>' . $row['mobile_number'] . '</td>';
+                        echo '<td>' . $row['email'] . '</td>';
                         echo '<td>' . $row['current_division'] . '</td>';
                         echo '<td>' . $row['current_district'] . '</td>';
                         echo '<td>' . $row['current_upazila'] . '</td>';
