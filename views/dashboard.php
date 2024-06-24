@@ -271,6 +271,21 @@
                 <input type="text" class="form-control" name="trainingName" id="trainingName" placeholder="Enter Name of Training" required>
             </div>
 
+            <div class="form-group">
+                <label for="batchName">Batch Name/Number</label>
+                <input type="text" class="form-control" name="batchName" id="batchName" placeholder="Enter Batch Name/Number of Training">
+            </div>
+
+            <div class="form-group">
+                <label for="batchStartDate">Batch start date</label>
+                <input type="date" class="form-control" name="batchStartDate" id="batchStartDate" placeholder="Enter Batch start date">
+            </div>
+
+            <div class="form-group">
+                <label for="batchEndDate">Batch end date ( Expected )</label>
+                <input type="date" class="form-control" name="batchEndDate" id="batchEndDate" placeholder="Enter Batch end date ( Expected )">
+            </div>
+
             <!-- Remarks -->
             <div class="form-group">
                 <label for="remarks">Remarks</label>

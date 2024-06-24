@@ -45,6 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adolescent_girls = $_POST['adolescentGirls'];
     $adolescent_third_gender = $_POST['adolescentThirdGender'];
     $training_name = $_POST['trainingName'];
+    $batchName = $_POST['batchName'];
+    $batchStartDate = $_POST['batchStartDate'];
+    $batchEndDate = $_POST['batchEndDate'];
     $remarks = $_POST['remarks'];
 
 
