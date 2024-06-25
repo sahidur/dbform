@@ -11,21 +11,15 @@ include '../includes/db.php';
 $user_id = $_SESSION['user_id'];
 
 if ( $user_id == 9){
-$stmt = $db->prepare("SELECT * FROM user_data");
+$stmt = $db->prepare("select * from user_data ud left join users u on ud.user_id = u.id");
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    $stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
+    $stmt = $db->prepare("select * from user_data ud left join users u on ud.user_id = u.id where ud.user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-
-$stmt1 = $db->prepare("SELECT username FROM users WHERE id = :user_id");
-$stmt1->bindParam(':user_id', $user_id);
-$stmt1->execute();
-$dataUser = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -185,7 +179,7 @@ $dataUser = $stmt1->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['batch_end_date'] . '</td>';
                         echo '<td>' . $row['remarks'] . '</td>';
                         echo '<td>' . $row['created_date'] . '</td>';
-                        echo '<td>' . $dataUser[0]['username'] . '</td>';
+                        echo '<td>' . $row['username'] . '</td>';
                         echo '</tr>';
                     }
                 ?>
