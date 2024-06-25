@@ -5,7 +5,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verify reCAPTCHA token
-    $recaptcha_secret = 'YOUR_SECRET_KEY';
+    $recaptcha_secret = '6Lfh2wAqAAAAAKZPKpXqtTOw9nwoMFhyum3hMIV2';
     $recaptcha_response = $_POST['recaptcha_token'];
     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
 
@@ -57,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <title>এপলিকেশন এ লগইন করুন</title>
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lfh2wAqAAAAADf28o1SW_ZSIJZGigPsF9FpUhG7"></script>
     <script>
         grecaptcha.ready(function() {
-            grecaptcha.execute('YOUR_SITE_KEY', {action: 'signin'}).then(function(token) {
+            grecaptcha.execute('6Lfh2wAqAAAAADf28o1SW_ZSIJZGigPsF9FpUhG7', {action: 'signin'}).then(function(token) {
                 document.getElementById('recaptcha_token').value = token;
             });
         });
