@@ -4,6 +4,32 @@ include '../includes/functions.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Verify reCAPTCHA token
+    $recaptcha_secret = 'YOUR_SECRET_KEY';
+    $recaptcha_response = $_POST['recaptcha_token'];
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+
+    $recaptcha_data = [
+        'secret' => $recaptcha_secret,
+        'response' => $recaptcha_response
+    ];
+
+    $options = [
+        'http' => [
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($recaptcha_data)
+        ]
+    ];
+
+    $context = stream_context_create($options);
+    $response = file_get_contents($recaptcha_url, false, $context);
+    $result = json_decode($response, true);
+
+    if (!$result['success'] || $result['score'] < 0.5) {
+        die("reCAPTCHA verification failed.");
+    }
+
     if (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
         die("Invalid CSRF token");
     }
@@ -30,14 +56,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Sign In</title>
+    <title>এপলিকেশন এ লগইন করুন</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('YOUR_SITE_KEY', {action: 'signin'}).then(function(token) {
+                document.getElementById('recaptcha_token').value = token;
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Sign In</h2>
+        <h2 class="text-center">এপলিকেশন এ লগইন করুন</h2>
         <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
         <form method="post" action="signin.php" class="w-50 mx-auto">
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token); ?>">
+            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
             <div class="form-group">
                 <label for="username">ইউজারনেম</label>
                 <input type="text" name="username" class="form-control" required>
