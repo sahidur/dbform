@@ -48,8 +48,19 @@
 
             <!-- Guardian (Fathers/Mothers/Husband) name -->
             <div class="form-group">
-                <label for="guardianName">Guardian (Fathers/Mothers/Husband) Name</label>
-                <input type="text" class="form-control"  name="guardianName" id="guardianName" placeholder="Enter Guardian's Name" required>
+                <label for="guardianName">অভিভাবক এর  নাম</label>
+                <input type="text" class="form-control"  name="guardianName" id="guardianName" placeholder="অভিভাবক এর  নাম" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guardianRelation">অভিভাবক এর সাথে সম্পর্ক</label>
+                <select class="form-control"  name="guardianRelation" id="guardianRelation" required>
+                <option value="">Please Select</option> 
+                <option>Father</option>
+                    <option>Mother</option>
+                    <option>Husband</option>
+                    <option>Other</option>
+                </select>
             </div>
 
             <!-- Sex -->
@@ -73,13 +84,13 @@
             <!-- National ID/Birth Registration -->
             <div class="form-group">
                 <label for="nationalId">জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নং.</label>
-                <input type="text" class="form-control" name="nationalId" id="nationalId" placeholder="Enter National ID or Birth Registration" required>
+                <input type="text" class="form-control" name="nationalId" id="nationalId" placeholder="জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নং" required>
             </div>
 
             <!-- Mobile Number -->
             <div class="form-group">
                 <label for="mobileNumber">ফোন নং.</label>
-                <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" required>
+                <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="ফোন নং." required>
                 <div class="error" id="mobileNumberError"></div>
             </div>
 
@@ -87,7 +98,7 @@
             <!-- Email Number -->
             <div class="form-group">
                 <label for="email">ইমেইল আইডি ( ক্যারিয়ার হাব ওয়েবসাইট এ ব্যবহৃত ইমেইল )</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email ID" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="ক্যারিয়ার হাব ওয়েবসাইট এ ব্যবহৃত ইমেইল আইডি" required>
             </div>
 
             <!-- Current Division -->

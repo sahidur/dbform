@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $beneficiary_id = $_POST['beneficiaryId'];
     $beneficiary_name = $_POST['beneficiaryName'];
     $guardian_name = $_POST['guardianName'];
+    $guardian_relation = $_POST['guardianRelation'];
     $sex = $_POST['sex'];
     $age = $_POST['age'];
     $national_id = $_POST['nationalId'];
@@ -45,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adolescent_girls = $_POST['adolescentGirls'];
     $adolescent_third_gender = $_POST['adolescentThirdGender'];
     $training_name = $_POST['trainingName'];
-    $batchName = $_POST['batchName'];
-    $batchStartDate = $_POST['batchStartDate'];
-    $batchEndDate = $_POST['batchEndDate'];
+    $batch_name = $_POST['batchName'];
+    $batch_start_date = $_POST['batchStartDate'];
+    $batch_end_date = $_POST['batchEndDate'];
     $remarks = $_POST['remarks'];
 
 
@@ -88,7 +89,7 @@ $upazilla = $stmt->fetchColumn();
 
     // Prepare SQL and bind parameters
     $sql = "INSERT INTO user_data (user_id,
-                beneficiary_id, beneficiary_name, guardian_name, sex, age, 
+                beneficiary_id, beneficiary_name, guardian_name,guardian_relation, sex, age, 
                 national_id, mobile_number,email, current_division, current_district, 
                 current_upazila, current_city_corporation, current_ward_no, 
                 current_slum_name, is_female_headed, hh_income, climate_migrant, 
@@ -96,9 +97,9 @@ $upazilla = $stmt->fetchColumn();
                 disability_status, disabled_members, ethnic_group, male_members, 
                 female_members, third_gender_members, boys_under_18, girls_under_18, 
                 third_gender_under_18, adolescent_boys, adolescent_girls, 
-                adolescent_third_gender, training_name, remarks) 
+                adolescent_third_gender, training_name,batch_name,batch_start_date,batch_end_date, remarks) 
             VALUES (
-                :user_id,:beneficiary_id, :beneficiary_name, :guardian_name, :sex, :age, 
+                :user_id,:beneficiary_id, :beneficiary_name, :guardian_name,:guardian_relation, :sex, :age, 
                 :national_id, :mobile_number, :email, :current_division, :current_district, 
                 :current_upazila, :current_city_corporation, :current_ward_no, 
                 :current_slum_name, :is_female_headed, :hh_income, :climate_migrant, 
@@ -106,7 +107,7 @@ $upazilla = $stmt->fetchColumn();
                 :disability_status, :disabled_members, :ethnic_group, :male_members, 
                 :female_members, :third_gender_members, :boys_under_18, :girls_under_18, 
                 :third_gender_under_18, :adolescent_boys, :adolescent_girls, 
-                :adolescent_third_gender, :training_name, :remarks)";
+                :adolescent_third_gender, :training_name, :batch_name, :batch_start_date, :batch_end_date, :remarks)";
 
     $stmt = $db->prepare($sql);
 
@@ -115,6 +116,7 @@ $upazilla = $stmt->fetchColumn();
     $stmt->bindParam(':beneficiary_id', $beneficiary_id);
     $stmt->bindParam(':beneficiary_name', $beneficiary_name);
     $stmt->bindParam(':guardian_name', $guardian_name);
+    $stmt->bindParam(':guardian_relation', $guardian_relation);
     $stmt->bindParam(':sex', $sex);
     $stmt->bindParam(':age', $age);
     $stmt->bindParam(':national_id', $national_id);
@@ -147,6 +149,9 @@ $upazilla = $stmt->fetchColumn();
     $stmt->bindParam(':adolescent_girls', $adolescent_girls);
     $stmt->bindParam(':adolescent_third_gender', $adolescent_third_gender);
     $stmt->bindParam(':training_name', $training_name);
+    $stmt->bindParam(':batch_name', $batch_name);
+    $stmt->bindParam(':batch_start_date', $batch_start_date);
+    $stmt->bindParam(':batch_end_date', $batch_end_date);
     $stmt->bindParam(':remarks', $remarks);
 
     // Execute the query
