@@ -15,7 +15,7 @@ $stmt = $db->prepare("select * from user_data ud left join users u on ud.user_id
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    $stmt = $db->prepare("select * from user_data ud left join users u on ud.user_id = u.id where ud.user_id = :user_id");
+$stmt = $db->prepare("select * from user_data ud left join users u on ud.user_id = u.id where ud.user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -137,7 +137,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                     foreach ($data as $row) {
                         echo '<tr>';
-                        echo '<td>' . $row['ud.id'] . '</td>';
+                        echo '<td>' . $row['beneficiary_id_serial'] . '</td>';
                         echo '<td>' . $row['beneficiary_id'] . '</td>';
                         echo '<td>' . $row['beneficiary_name'] . '</td>';
                         echo '<td>' . $row['guardian_name'] . '</td>';
