@@ -17,7 +17,7 @@
         <h2 class="text-center">Dashboard</h2>
         <div class="text-center">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addDataModal">Add Data</button>
-            <button class="btn btn-secondary" onclick="window.location.href='view_data'">View Data</button>
+            <button class="btn btn-secondary" onclick="window.location.href='view_data.php'">View Data</button>
             <button class="btn btn-danger" onclick="window.location.href='logout.php'">Logout</button>
         </div>
 
