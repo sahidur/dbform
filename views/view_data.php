@@ -137,7 +137,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                     foreach ($data as $row) {
                         echo '<tr>';
-                        echo '<td>' . $row['id'] . '</td>';
+                        echo '<td>' . $row['ud.id'] . '</td>';
                         echo '<td>' . $row['beneficiary_id'] . '</td>';
                         echo '<td>' . $row['beneficiary_name'] . '</td>';
                         echo '<td>' . $row['guardian_name'] . '</td>';
