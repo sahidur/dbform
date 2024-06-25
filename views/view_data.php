@@ -170,6 +170,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['batch_start_date'] . '</td>';
                         echo '<td>' . $row['batch_end_date'] . '</td>';
                         echo '<td>' . $row['remarks'] . '</td>';
+                        echo '<td>' . $row['created_date'] . '</td>';
                         echo '</tr>';
                     }
                 ?>
