@@ -179,7 +179,7 @@ $dataUser = $stmt1->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['batch_end_date'] . '</td>';
                         echo '<td>' . $row['remarks'] . '</td>';
                         echo '<td>' . $row['created_date'] . '</td>';
-                        echo '<td>' . print_r($dataUser); . '</td>';
+                        echo '<td>' . $dataUser['username'] . '</td>';
                         echo '</tr>';
                     }
                 ?>
