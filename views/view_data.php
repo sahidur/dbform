@@ -85,6 +85,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Beneficiary ID</th>
                     <th>Beneficiary Name</th>
                     <th>Guardian Name</th>
+                    <th>Guardian Relation</th>
                     <th>Sex</th>
                     <th>Age</th>
                     <th>National ID</th>
@@ -117,7 +118,11 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Adolescent Girls</th>
                     <th>Adolescent Third Gender</th>
                     <th>Training Name</th>
+                    <th>Batch Name</th>
+                    <th>Training Start Date</th>
+                    <th>Training End Date</th>
                     <th>Remarks</th>
+                    <th>Data Added Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -128,6 +133,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['beneficiary_id'] . '</td>';
                         echo '<td>' . $row['beneficiary_name'] . '</td>';
                         echo '<td>' . $row['guardian_name'] . '</td>';
+                        echo '<td>' . $row['guardian_relation'] . '</td>';
                         echo '<td>' . $row['sex'] . '</td>';
                         echo '<td>' . $row['age'] . '</td>';
                         echo '<td>' . $row['national_id'] . '</td>';
@@ -160,6 +166,9 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['adolescent_girls'] . '</td>';
                         echo '<td>' . $row['adolescent_third_gender'] . '</td>';
                         echo '<td>' . $row['training_name'] . '</td>';
+                        echo '<td>' . $row['batch_name'] . '</td>';
+                        echo '<td>' . $row['batch_start_date'] . '</td>';
+                        echo '<td>' . $row['batch_end_date'] . '</td>';
                         echo '<td>' . $row['remarks'] . '</td>';
                         echo '</tr>';
                     }
