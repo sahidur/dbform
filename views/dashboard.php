@@ -36,8 +36,12 @@
         <form id="addDataForm">
             <!-- Beneficiary ID -->
             <div class="form-group">
-                <label for="beneficiaryId">Beneficiary ID (Start with KFW4-CH-/KFW4-BISD-)</label>
-                <input type="text" class="form-control" name="beneficiaryId" id="beneficiaryId" placeholder="Enter Beneficiary ID" required>
+                <label for="beneficiaryId">Beneficiary ID</label>
+                <select class="form-control"  name="beneficiaryId" id="beneficiaryId" required>
+                <option value="">Please Select</option> 
+                <option>Career Hub Khulna</option>
+                    <option>BISD Online Ostad</option>
+                </select>
             </div>
 
             <!-- Name of beneficiary/ HH Head -->
@@ -65,7 +69,7 @@
 
             <!-- Sex -->
             <div class="form-group">
-                <label for="sex">Sex</label>
+                <label for="sex">লিঙ্গ</label>
                 <select class="form-control"  name="sex" id="sex" required>
                 <option value="">Please Select</option> 
                 <option>Male</option>
@@ -76,8 +80,8 @@
 
             <!-- Age -->
             <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" name="age" id="age" placeholder="Enter Age" required>
+                <label for="age">বয়স</label>
+                <input type="number" class="form-control" name="age" id="age" placeholder="বয়স" required>
                 <div class="error" id="ageError"></div>
             </div>
 
