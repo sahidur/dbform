@@ -4,10 +4,10 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
     session_regenerate_id(true); // Prevent session fixation
-    header('Location: views/dashboard');
+    header('Location: views/dashboard.php');
     exit();
 } else {
-    header('Location: views/signin');
+    header('Location: views/signin.php');
     exit();
 }
 ?>
