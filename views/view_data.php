@@ -14,6 +14,13 @@ $stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$stmt1 = $db->prepare("SELECT username FROM users WHERE id = :user_id");
+$stmt1->bindParam(':user_id', $user_id);
+$stmt1->execute();
+$dataUser = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,8 +88,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <table id="myDataTable" class="display" style="width:100%">
             <thead>
             <tr>
-                    <th>Sl.</th>
-                    <th>Beneficiary ID</th>
+                    <th>Beneficiary ID.</th>
+                    <th>Beneficiary From</th>
                     <th>Beneficiary Name</th>
                     <th>Guardian Name</th>
                     <th>Guardian Relation</th>
@@ -123,6 +130,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Training End Date</th>
                     <th>Remarks</th>
                     <th>Data Added Date</th>
+                    <th>Data Added By</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,6 +179,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '<td>' . $row['batch_end_date'] . '</td>';
                         echo '<td>' . $row['remarks'] . '</td>';
                         echo '<td>' . $row['created_date'] . '</td>';
+                        echo '<td>' . $dataUser . '</td>';
                         echo '</tr>';
                     }
                 ?>
