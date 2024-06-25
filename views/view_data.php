@@ -10,10 +10,16 @@ include '../includes/db.php';
 
 $user_id = $_SESSION['user_id'];
 
-$stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
+if ( $user_id == 9){
+$stmt = $db->prepare("SELECT * FROM user_data");
+$stmt->execute();
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $stmt = $db->prepare("SELECT * FROM user_data WHERE user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 $stmt1 = $db->prepare("SELECT username FROM users WHERE id = :user_id");
