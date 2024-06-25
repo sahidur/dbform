@@ -72,13 +72,13 @@
 
             <!-- National ID/Birth Registration -->
             <div class="form-group">
-                <label for="nationalId">National ID/Birth Registration</label>
+                <label for="nationalId">জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নং.</label>
                 <input type="text" class="form-control" name="nationalId" id="nationalId" placeholder="Enter National ID or Birth Registration" required>
             </div>
 
             <!-- Mobile Number -->
             <div class="form-group">
-                <label for="mobileNumber">Mobile Number</label>
+                <label for="mobileNumber">ফোন নং.</label>
                 <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" required>
                 <div class="error" id="mobileNumberError"></div>
             </div>
@@ -86,7 +86,7 @@
 
             <!-- Email Number -->
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">ইমেইল আইডি ( ক্যারিয়ার হাব ওয়েবসাইট এ ব্যবহৃত ইমেইল )</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email ID" required>
             </div>
 
